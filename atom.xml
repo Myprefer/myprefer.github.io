@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-01-27T12:48:58.499Z</updated>
+  <updated>2024-01-27T13:43:28.608Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HTTP协议请求结构</title>
+    <link href="http://example.com/post/HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E7%BB%93%E6%9E%84.html"/>
+    <id>http://example.com/post/HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E7%BB%93%E6%9E%84.html</id>
+    <published>2024-01-27T12:53:28.000Z</published>
+    <updated>2024-01-27T13:43:28.608Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><ul><li>HTTP: Hypertext Transfer Protocol</li><li>作用: 是一种用于<strong>传输超文本</strong>的协议。</li><li>是客户端和服务器之间进行通信的基础，常用于在Web浏览器和Web服务器之间传输数据。</li><li>客户端与服务端之间通过交换一个个<strong>独立的消息</strong>进行通信, 客户端发出的称为<strong>请求</strong>, 服务端发出的应答消息称为<strong>响应</strong></li></ul><p><img src="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview/fetching_a_page.png" alt="一个网页文档是多种不同资源的组合"></p><hr><h3 id="HTTP请求的基本结构"><a href="#HTTP请求的基本结构" class="headerlink" title="HTTP请求的基本结构"></a>HTTP请求的基本结构</h3><p>示例:</p><div class="language-http"><button title="Copy code" class="copy"></button><span class="lang">http</span><pre class="shiki material-theme-palenight" style="background-color: #1a1a1a" tabindex="0"><code><span class="line"><span style="color: #89DDFF; font-style: italic">POST</span><span style="color: #BABED8"> /api/login HTTP/1.1 </span></span><span class="line"><span style="color: #F07178">Host</span><span style="color: #F78C6C">:</span><span style="color: #BABED8"> </span><span style="color: #C3E88D">example.com</span></span><span class="line"><span style="color: #F07178">User-Agent</span><span style="color: #F78C6C">:</span><span style="color: #BABED8"> </span><span style="color: #C3E88D">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36</span></span><span class="line"><span style="color: #F07178">Content-Type</span><span style="color: #F78C6C">:</span><span style="color: #BABED8"> </span><span style="color: #C3E88D">application/json</span></span><span class="line"></span><span class="line"><span style="color: #89DDFF">&#123;</span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">username</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #BABED8"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">user123</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span><span style="color: #BABED8"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">password</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #BABED8"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">pass456</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">&#125;</span></span></code></pre></div><ul><li>请求行（Request Line）</li><li>请求头（Header）</li><li>请求体（Body）</li></ul><h4 id="请求行"><a href="#请求行" class="headerlink" title="请求行"></a>请求行</h4><ul><li><p>请求行位于请求报文的开头(示例第一行), 包括:</p><ul><li>请求方法</li><li>URL</li><li>HTTP版本</li></ul></li><li><p>请求方法:</p></li></ul><table><thead><tr><th>请求方法</th><th>描述</th><th>用途</th></tr></thead><tbody><tr><td><strong>GET</strong></td><td>请求获取指定资源</td><td>获取网页、图片、文本等资源</td></tr><tr><td><strong>POST</strong></td><td>在服务器上创建新的资源</td><td>提交表单数据、上传文件等</td></tr><tr><td>PUT</td><td>更新服务器上的资源</td><td>更新已存在的资源</td></tr><tr><td>DELETE</td><td>请求服务器删除指定资源</td><td>删除资源</td></tr><tr><td>HEAD</td><td>请求获取响应头信息</td><td>获取资源的头部信息，而不获取资源本身</td></tr><tr><td>OPTIONS</td><td>请求查看支持的方法</td><td>查询服务器支持的HTTP方法</td></tr><tr><td>PATCH</td><td>对资源进行部分修改</td><td>部分更新资源</td></tr></tbody></table><h4 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h4><ul><li><p>HTTP请求头提供了关于请求, 响应或者其他的发送实体的信息</p></li><li><p>示例中:</p><ul><li><p>Host：指定服务器的域名和端口号。</p></li><li><p>User-Agent：浏览器或客户端的信息。</p></li><li><p>Content-Type：请求体的数据类型，如application&#x2F;json。</p></li></ul></li><li><p>其他常见请求头，如Accept、Authorization等, 手册:<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers">HTTP 标头（header） - HTTP | MDN (mozilla.org)</a></p></li></ul><h4 id="请求体"><a href="#请求体" class="headerlink" title="请求体"></a>请求体</h4><ul><li>可选, 主要用于再请求中携带一些数据(表单等)</li><li>主要用于POST, PUT等需要向服务器提交数据的请求</li><li>Content-Type请求头用于指示请求体的媒体类型, 例如:<ul><li><code>application/x-www-form-urlencoded</code>：用于普通表单数据。</li><li><code>multipart/form-data</code>：用于文件上传等表单数据。</li><li><code>application/json</code>：用于JSON数据。(示例)</li><li><code>text/plain</code>：用于纯文本数据等。</li></ul></li><li>Content-Type手册: <a href="https://www.runoob.com/http/http-content-type.html">HTTP content-type</a></li></ul><hr><h3 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h3><ul><li><p>当访问一个网页时, 客户端向服务端发出请求, 服务端返回一个包含HTTP状态码的信息头(server header)</p></li><li><p>常见的有:</p><ul><li><p>200 - 请求成功</p></li><li><p>301 - 资源（网页等）被永久转移到其它URL</p></li><li><p>404 - 请求的资源（网页等）不存在</p></li><li><p>500 - 内部服务器错误</p></li></ul></li><li><p>状态码分类:</p></li></ul><table><thead><tr><th align="left">分类</th><th align="left">分类描述</th></tr></thead><tbody><tr><td align="left">1xx</td><td align="left">信息，服务器收到请求，需要请求者继续执行操作</td></tr><tr><td align="left">2xx</td><td align="left">成功，操作被成功接收并处理</td></tr><tr><td align="left">3xx</td><td align="left">重定向，需要进一步的操作以完成请求</td></tr><tr><td align="left">4xx</td><td align="left">客户端错误，请求包含语法错误或无法完成请求</td></tr><tr><td align="left">5xx</td><td align="left">服务器错误，服务器在处理请求的过程中发生了错误</td></tr></tbody></table><ul><li>参考手册: <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status">HTTP 响应状态码 - HTTP | MDN (mozilla.org)</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;HTTP协议&quot;&gt;&lt;a href=&quot;#HTTP协议&quot; class=&quot;headerlink&quot; title=&quot;HTTP协议&quot;&gt;&lt;/a&gt;HTTP协议&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;HTTP: Hypertext Transfer Protocol&lt;/li&gt;
+&lt;li&gt;作用: 是</summary>
+      
+    
+    
+    
+    
+    <category term="网络安全" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
+    
+  </entry>
   
   <entry>
     <title>前端三剑客: HTML/CSS/JavaScript</title>
@@ -61,11 +87,11 @@
     
     <category term="网络安全" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
     
+    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
+    
     <category term="小迪安全" scheme="http://example.com/tags/%E5%B0%8F%E8%BF%AA%E5%AE%89%E5%85%A8/"/>
     
     <category term="基础入门" scheme="http://example.com/tags/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/"/>
-    
-    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
     
   </entry>
   
@@ -149,11 +175,11 @@
     
     <category term="网络安全" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
     
+    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
+    
     <category term="小迪安全" scheme="http://example.com/tags/%E5%B0%8F%E8%BF%AA%E5%AE%89%E5%85%A8/"/>
     
     <category term="基础入门" scheme="http://example.com/tags/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/"/>
-    
-    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
     
   </entry>
   
