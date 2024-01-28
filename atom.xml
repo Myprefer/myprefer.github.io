@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-01-27T13:44:00.198Z</updated>
+  <updated>2024-01-28T06:22:03.350Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Python爬虫基础</title>
+    <link href="http://example.com/post/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80.html"/>
+    <id>http://example.com/post/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80.html</id>
+    <published>2024-01-28T05:33:12.000Z</published>
+    <updated>2024-01-28T06:22:03.350Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/qq_44907926/article/details/118585030">一篇万字博文带你入坑爬虫这条不归路 【万字图文】_深宫曲易次元攻略-CSDN博客</a></p><h3 id="爬虫概念"><a href="#爬虫概念" class="headerlink" title="爬虫概念"></a>爬虫概念</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><ul><li>网络爬虫是<strong>伪装</strong>成客户端与服务端进行<strong>数据交互</strong>的程序。</li></ul><h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><ul><li>数据采集, 搜索引擎, 模拟操作, 软件测试, 网络安全(信息轰炸, web漏洞扫描)</li></ul><h4 id="一般流程"><a href="#一般流程" class="headerlink" title="一般流程"></a>一般流程</h4><ul><li><img src="https://img-blog.csdnimg.cn/20210709001610901.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0OTA3OTI2,size_16,color_FFFFFF,t_70" alt="一般爬虫开发流程"></li></ul><hr><h3 id="会话技术"><a href="#会话技术" class="headerlink" title="会话技术:"></a>会话技术:</h3><h4 id="Cookie-s"><a href="#Cookie-s" class="headerlink" title="Cookie(s)"></a>Cookie(s)</h4><ul><li><p>介绍: 指某些网站为了辨别用户身份、进行 session 跟踪而储存在<strong>用户本地</strong>终端上的数据, 实际由服务器发送给客户端, <strong>可以理解为一个凭证</strong>, 服务器可以以此辨别用户身份</p></li><li><p>爬虫中使用cookie</p><ul><li>好处: 能够访问登录界面</li><li>坏处: 容易被反爬</li></ul></li></ul><h4 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h4><ul><li>含义: 在爬虫中, 指<strong>一个浏览器窗口从打开到关闭的这个期间</strong></li><li>目的: 在一个客户打开浏览器到关闭的这个期间, 发起的所有请求都可以被识别为<strong>同一个用户</strong></li><li>实现: 客户访问网站时, 生成一个包含SessionID的cookie, 用于服务器识别</li><li><strong>Session是储存在服务器上的数据</strong></li></ul><hr><h3 id="爬虫基础"><a href="#爬虫基础" class="headerlink" title="爬虫基础"></a>爬虫基础</h3><h4 id="requests发送请求"><a href="#requests发送请求" class="headerlink" title="requests发送请求"></a>requests发送请求</h4><ul><li><p>GET请求示例(失败)</p><div class="language-python"><button title="Copy code" class="copy"></button><span class="lang">python</span><pre class="shiki material-theme-palenight" style="background-color: #1a1a1a" tabindex="0"><code><span class="line"><span style="color: #89DDFF; font-style: italic">import</span><span style="color: #BABED8"> requests</span></span><span class="line"></span><span class="line"></span><span class="line"><span style="color: #BABED8">r </span><span style="color: #89DDFF">=</span><span style="color: #BABED8"> requests</span><span style="color: #89DDFF">.</span><span style="color: #82AAFF">get</span><span style="color: #89DDFF">(</span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">https://www.bilibili.com/</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">)</span></span><span class="line"><span style="color: #82AAFF">print</span><span style="color: #89DDFF">(</span><span style="color: #82AAFF">r</span><span style="color: #89DDFF">.</span><span style="color: #F07178">status_code</span><span style="color: #89DDFF">)</span></span><span class="line"><span style="color: #82AAFF">print</span><span style="color: #89DDFF">(</span><span style="color: #82AAFF">r</span><span style="color: #89DDFF">.</span><span style="color: #F07178">ok</span><span style="color: #89DDFF">)</span></span></code></pre></div><p>  输出:</p><div class="language-txt"><button title="Copy code" class="copy"></button><span class="lang">txt</span><pre class="shiki material-theme-palenight" style="background-color: #1a1a1a" tabindex="0"><code><span class="line"><span style="color: #babed8">&lt;Response [412]&gt;</span></span><span class="line"><span style="color: #babed8">False</span></span></code></pre></div></li><li><p>修改请求头, 模拟浏览器访问:</p><div class="language-python"><button title="Copy code" class="copy"></button><span class="lang">python</span><pre class="shiki material-theme-palenight" style="background-color: #1a1a1a" tabindex="0"><code><span class="line"><span style="color: #89DDFF; font-style: italic">import</span><span style="color: #BABED8"> requests</span></span><span class="line"></span><span class="line"></span><span class="line"><span style="color: #BABED8">headers </span><span style="color: #89DDFF">=</span><span style="color: #BABED8"> </span><span style="color: #89DDFF">&#123;</span></span><span class="line"><span style="color: #BABED8">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">User-Agent</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #BABED8"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0</span><span style="color: #89DDFF">&quot;</span></span><span class="line"><span style="color: #89DDFF">&#125;</span></span><span class="line"><span style="color: #BABED8">r </span><span style="color: #89DDFF">=</span><span style="color: #BABED8"> requests</span><span style="color: #89DDFF">.</span><span style="color: #82AAFF">get</span><span style="color: #89DDFF">(</span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">https://www.bilibili.com/</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span><span style="color: #82AAFF"> </span><span style="color: #BABED8; font-style: italic">headers</span><span style="color: #89DDFF">=</span><span style="color: #82AAFF">headers</span><span style="color: #89DDFF">)</span></span><span class="line"><span style="color: #82AAFF">print</span><span style="color: #89DDFF">(</span><span style="color: #82AAFF">r</span><span style="color: #89DDFF">)</span></span><span class="line"><span style="color: #82AAFF">print</span><span style="color: #89DDFF">(</span><span style="color: #82AAFF">r</span><span style="color: #89DDFF">.</span><span style="color: #F07178">ok</span><span style="color: #89DDFF">)</span></span></code></pre></div><p>输出(成功):</p><div class="language-txt"><button title="Copy code" class="copy"></button><span class="lang">txt</span><pre class="shiki material-theme-palenight" style="background-color: #1a1a1a" tabindex="0"><code><span class="line"><span style="color: #babed8">&lt;Response [200]&gt;</span></span><span class="line"><span style="color: #babed8">True</span></span></code></pre></div></li></ul><h4 id="BeautifulSoup解析获取的html文件"><a href="#BeautifulSoup解析获取的html文件" class="headerlink" title="BeautifulSoup解析获取的html文件"></a>BeautifulSoup解析获取的html文件</h4><ul><li><p>示例:</p><div class="language-python"><button title="Copy code" class="copy"></button><span class="lang">python</span><pre class="shiki material-theme-palenight" style="background-color: #1a1a1a" tabindex="0"><code><span class="line"><span style="color: #89DDFF; font-style: italic">import</span><span style="color: #BABED8"> requests</span></span><span class="line"><span style="color: #89DDFF; font-style: italic">from</span><span style="color: #BABED8"> bs4 </span><span style="color: #89DDFF; font-style: italic">import</span><span style="color: #BABED8"> BeautifulSoup</span></span><span class="line"></span><span class="line"><span style="color: #BABED8">headers </span><span style="color: #89DDFF">=</span><span style="color: #BABED8"> </span><span style="color: #89DDFF">&#123;</span></span><span class="line"><span style="color: #BABED8">    </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">User-Agent</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #BABED8"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0</span><span style="color: #89DDFF">&quot;</span></span><span class="line"><span style="color: #89DDFF">&#125;</span></span><span class="line"><span style="color: #BABED8">    response </span><span style="color: #89DDFF">=</span><span style="color: #BABED8"> requests</span><span style="color: #89DDFF">.</span><span style="color: #82AAFF">get</span><span style="color: #89DDFF">(</span><span style="color: #C792EA">f</span><span style="color: #C3E88D">&quot;https://movie.douban.com/top250)</span></span><span class="line"><span style="color: #C3E88D">    content = response.text</span></span><span class="line"><span style="color: #C3E88D">                            </span></span><span class="line"><span style="color: #C3E88D">    soup = BeautifulSoup(content, &quot;</span><span style="color: #82AAFF">html</span><span style="color: #89DDFF">.</span><span style="color: #F07178">parser</span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">)</span></span><span class="line"><span style="color: #82AAFF">    </span><span style="color: #BABED8; font-style: italic">title</span><span style="color: #82AAFF"> </span><span style="color: #89DDFF">=</span><span style="color: #82AAFF"> soup</span><span style="color: #89DDFF">.</span><span style="color: #82AAFF">find_all</span><span style="color: #89DDFF">(</span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">div</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span><span style="color: #82AAFF"> </span><span style="color: #89DDFF">&#123;</span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">class</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #82AAFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">info</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">&#125;)</span></span><span class="line"><span style="color: #82AAFF">    </span><span style="color: #89DDFF; font-style: italic">for</span><span style="color: #82AAFF"> info </span><span style="color: #89DDFF; font-style: italic">in</span><span style="color: #82AAFF"> title</span><span style="color: #89DDFF">:</span></span><span class="line"><span style="color: #82AAFF">        </span><span style="color: #89DDFF; font-style: italic">for</span><span style="color: #82AAFF"> hd </span><span style="color: #89DDFF; font-style: italic">in</span><span style="color: #82AAFF"> info</span><span style="color: #89DDFF">.</span><span style="color: #82AAFF">find_all</span><span style="color: #89DDFF">(</span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">div</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span><span style="color: #82AAFF"> </span><span style="color: #89DDFF">&#123;</span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">class</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #82AAFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">hd</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">&#125;):</span></span><span class="line"><span style="color: #82AAFF">            print</span><span style="color: #89DDFF">(</span><span style="color: #82AAFF">hd</span><span style="color: #89DDFF">.</span><span style="color: #82AAFF">find</span><span style="color: #89DDFF">(</span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">span</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span><span style="color: #82AAFF"> </span><span style="color: #89DDFF">&#123;</span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">class</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #82AAFF"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">title</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">&#125;).</span><span style="color: #F07178">string</span><span style="color: #89DDFF">)</span></span></code></pre></div><p>输出:</p><div class="language-txt"><button title="Copy code" class="copy"></button><span class="lang">txt</span><pre class="shiki material-theme-palenight" style="background-color: #1a1a1a" tabindex="0"><code><span class="line"><span style="color: #babed8">肖申克的救赎</span></span><span class="line"><span style="color: #babed8">霸王别姬</span></span><span class="line"><span style="color: #babed8">阿甘正传</span></span><span class="line"><span style="color: #babed8">泰坦尼克号</span></span><span class="line"><span style="color: #babed8">这个杀手不太冷</span></span><span class="line"><span style="color: #babed8">千与千寻</span></span><span class="line"><span style="color: #babed8">美丽人生</span></span><span class="line"><span style="color: #babed8">星际穿越</span></span><span class="line"><span style="color: #babed8">盗梦空间</span></span></code></pre></div></li><li><p><code>soup = BeautifulSoup(content, &quot;html.parser&quot;)</code>, 解析content中的HTML</p></li><li><p>XX.find()返回查找的第一个</p></li><li><p>XX.find_all()返回找到的全部内容的一个列表</p></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/qq_44907926/article/details/118585030&quot;&gt;一篇万字博文带你入坑爬虫这条不归路 【万字图文】_深宫曲易次元攻略-CSDN博客&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;爬虫概念&quot;&gt;&lt;a h</summary>
+      
+    
+    
+    
+    
+    <category term="网络安全" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="Python基础" scheme="http://example.com/tags/Python%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
+    
+  </entry>
+  
+  <entry>
     <title>HTTP协议请求结构</title>
     <link href="http://example.com/post/HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E7%BB%93%E6%9E%84.html"/>
     <id>http://example.com/post/HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E7%BB%93%E6%9E%84.html</id>
     <published>2024-01-27T12:53:28.000Z</published>
-    <updated>2024-01-27T13:44:00.198Z</updated>
+    <updated>2024-01-28T05:51:41.866Z</updated>
     
     <content type="html"><![CDATA[<h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><ul><li>HTTP: Hypertext Transfer Protocol</li><li>作用: 是一种用于<strong>传输超文本</strong>的协议。</li><li>是客户端和服务器之间进行通信的基础，常用于在Web浏览器和Web服务器之间传输数据。</li><li>客户端与服务端之间通过交换一个个<strong>独立的消息</strong>进行通信, 客户端发出的称为<strong>请求</strong>, 服务端发出的应答消息称为<strong>响应</strong></li></ul><p><img src="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview/fetching_a_page.png" alt="一个网页文档是多种不同资源的组合"></p><hr><h3 id="HTTP请求的基本结构"><a href="#HTTP请求的基本结构" class="headerlink" title="HTTP请求的基本结构"></a>HTTP请求的基本结构</h3><p>示例:</p><div class="language-http"><button title="Copy code" class="copy"></button><span class="lang">http</span><pre class="shiki material-theme-palenight" style="background-color: #1a1a1a" tabindex="0"><code><span class="line"><span style="color: #89DDFF; font-style: italic">POST</span><span style="color: #BABED8"> /api/login HTTP/1.1 </span></span><span class="line"><span style="color: #F07178">Host</span><span style="color: #F78C6C">:</span><span style="color: #BABED8"> </span><span style="color: #C3E88D">example.com</span></span><span class="line"><span style="color: #F07178">User-Agent</span><span style="color: #F78C6C">:</span><span style="color: #BABED8"> </span><span style="color: #C3E88D">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36</span></span><span class="line"><span style="color: #F07178">Content-Type</span><span style="color: #F78C6C">:</span><span style="color: #BABED8"> </span><span style="color: #C3E88D">application/json</span></span><span class="line"></span><span class="line"><span style="color: #89DDFF">&#123;</span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">username</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #BABED8"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">user123</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">,</span><span style="color: #BABED8"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C792EA">password</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">:</span><span style="color: #BABED8"> </span><span style="color: #89DDFF">&quot;</span><span style="color: #C3E88D">pass456</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">&#125;</span></span></code></pre></div><ul><li>请求行（Request Line）</li><li>请求头（Header）</li><li>请求体（Body）</li></ul><h4 id="请求行"><a href="#请求行" class="headerlink" title="请求行"></a>请求行</h4><ul><li><p>请求行位于请求报文的开头(示例第一行), 包括:</p><ul><li>请求方法</li><li>URL</li><li>HTTP版本</li></ul></li><li><p>请求方法:</p></li></ul><table><thead><tr><th>请求方法</th><th>描述</th><th>用途</th></tr></thead><tbody><tr><td><strong>GET</strong></td><td>请求获取指定资源</td><td>获取网页、图片、文本等资源</td></tr><tr><td><strong>POST</strong></td><td>在服务器上创建新的资源</td><td>提交表单数据、上传文件等</td></tr><tr><td>PUT</td><td>更新服务器上的资源</td><td>更新已存在的资源</td></tr><tr><td>DELETE</td><td>请求服务器删除指定资源</td><td>删除资源</td></tr><tr><td>HEAD</td><td>请求获取响应头信息</td><td>获取资源的头部信息，而不获取资源本身</td></tr><tr><td>OPTIONS</td><td>请求查看支持的方法</td><td>查询服务器支持的HTTP方法</td></tr><tr><td>PATCH</td><td>对资源进行部分修改</td><td>部分更新资源</td></tr></tbody></table><h4 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h4><ul><li><p>HTTP请求头提供了关于请求, 响应或者其他的发送实体的信息</p></li><li><p>示例中:</p><ul><li><p>Host：指定服务器的域名和端口号。</p></li><li><p>User-Agent：浏览器或客户端的信息。</p></li><li><p>Content-Type：请求体的数据类型，如application&#x2F;json。</p></li></ul></li><li><p>其他常见请求头，如Accept、Authorization等, 手册:<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers">HTTP 标头（header） - HTTP | MDN (mozilla.org)</a></p></li></ul><h4 id="请求体"><a href="#请求体" class="headerlink" title="请求体"></a>请求体</h4><ul><li>可选, 主要用于再请求中携带一些数据(表单等)</li><li>主要用于POST, PUT等需要向服务器提交数据的请求</li><li>Content-Type请求头用于指示请求体的媒体类型, 例如:<ul><li><code>application/x-www-form-urlencoded</code>：用于普通表单数据。</li><li><code>multipart/form-data</code>：用于文件上传等表单数据。</li><li><code>application/json</code>：用于JSON数据。(示例)</li><li><code>text/plain</code>：用于纯文本数据等。</li></ul></li><li>Content-Type手册: <a href="https://www.runoob.com/http/http-content-type.html">HTTP content-type</a></li></ul><hr><h3 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h3><ul><li><p>当访问一个网页时, 客户端向服务端发出请求, 服务端返回一个包含HTTP状态码的信息头(server header)</p></li><li><p>常见的有:</p><ul><li><p>200 - 请求成功</p></li><li><p>301 - 资源（网页等）被永久转移到其它URL</p></li><li><p>404 - 请求的资源（网页等）不存在</p></li><li><p>500 - 内部服务器错误</p></li></ul></li><li><p>状态码分类:</p></li></ul><table><thead><tr><th align="left">分类</th><th align="left">分类描述</th></tr></thead><tbody><tr><td align="left">1xx</td><td align="left">信息，服务器收到请求，需要请求者继续执行操作</td></tr><tr><td align="left">2xx</td><td align="left">成功，操作被成功接收并处理</td></tr><tr><td align="left">3xx</td><td align="left">重定向，需要进一步的操作以完成请求</td></tr><tr><td align="left">4xx</td><td align="left">客户端错误，请求包含语法错误或无法完成请求</td></tr><tr><td align="left">5xx</td><td align="left">服务器错误，服务器在处理请求的过程中发生了错误</td></tr></tbody></table><ul><li>参考手册: <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status">HTTP 响应状态码 - HTTP | MDN (mozilla.org)</a></li></ul>]]></content>
     
@@ -36,9 +63,9 @@
     
     
     
-    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
-    
     <category term="网络安全" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
     
   </entry>
   
@@ -61,9 +88,9 @@
     
     
     
-    <category term="前端基础" scheme="http://example.com/tags/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/"/>
-    
     <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
+    
+    <category term="前端基础" scheme="http://example.com/tags/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
@@ -85,9 +112,9 @@
     
     
     
-    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
-    
     <category term="网络安全" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
     
     <category term="小迪安全" scheme="http://example.com/tags/%E5%B0%8F%E8%BF%AA%E5%AE%89%E5%85%A8/"/>
     
@@ -113,9 +140,9 @@
     
     
     
-    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
-    
     <category term="网络安全" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
     
     <category term="视频会议" scheme="http://example.com/tags/%E8%A7%86%E9%A2%91%E4%BC%9A%E8%AE%AE/"/>
     
@@ -173,9 +200,9 @@
     
     
     
-    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
-    
     <category term="网络安全" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
     
     <category term="小迪安全" scheme="http://example.com/tags/%E5%B0%8F%E8%BF%AA%E5%AE%89%E5%85%A8/"/>
     
@@ -203,9 +230,9 @@
     
     
     
-    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
-    
     <category term="网络安全" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
     
     <category term="视频会议" scheme="http://example.com/tags/%E8%A7%86%E9%A2%91%E4%BC%9A%E8%AE%AE/"/>
     
