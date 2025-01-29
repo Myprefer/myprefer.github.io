@@ -1,2 +1,410 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/favicon.ico"><script type="module" crossorigin src="/static/js/120aa8f8.js"></script><link rel="stylesheet" href="/static/css/a14e1a22.css"><!-- hexo injector head_end start --><script rel="prefetch" async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script rel="preload" src="https://unpkg.com/blueimp-md5@^2.19.0/js/md5.min.js"></script><script rel="preload" src="https://unpkg.com/lodash@^4.17.21/lodash.min.js"></script><link rel="stylesheet" href="https://fonts.loli.net/css?family=Rubik" /><script rel="preload" src="https://unpkg.com/gitalk@^1.8.0/dist/gitalk.min.js"></script><link rel="stylesheet" href="https://unpkg.com/gitalk@^1.8.0/dist/gitalk.css"/><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="网络安全" type="application/atom+xml">
-</head><body id="body-container"><noscript><strong>We're sorry but this app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div></body></html>
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>内网安全-信息收集 | 网络安全</title><meta name="author" content="Myperfer"><meta name="copyright" content="Myperfer"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="内网信息收集一.收集本机信息判断是否有域 ipconfig &#x2F;all  在Windows IP 配置项下  Systeminfo 在”域”词条下, 图中显示为WORKGROUP, 说明没有域  net time &#x2F;domain  存在域并且当前用户是域用户  存在域，当前用户不是域用户回显: 发生系统错误 5  拒绝访问   不存在域      查看当前登录域 net config worksta">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内网安全-信息收集">
+<meta property="og:url" content="https://myprefer.github.io/post/%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86.html">
+<meta property="og:site_name" content="网络安全">
+<meta property="og:description" content="内网信息收集一.收集本机信息判断是否有域 ipconfig &#x2F;all  在Windows IP 配置项下  Systeminfo 在”域”词条下, 图中显示为WORKGROUP, 说明没有域  net time &#x2F;domain  存在域并且当前用户是域用户  存在域，当前用户不是域用户回显: 发生系统错误 5  拒绝访问   不存在域      查看当前登录域 net config worksta">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://myprefer.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2024-04-11T11:50:10.000Z">
+<meta property="article:modified_time" content="2024-06-01T01:49:20.145Z">
+<meta property="article:author" content="Myperfer">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://myprefer.github.io/img/butterfly-icon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://myprefer.github.io/post/%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: undefined,
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '内网安全-信息收集',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="网络安全" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="triangles-wrap"><div class="triangles-eiz"></div><div class="triangles-seiz"></div><div class="triangles-sei"></div><div class="triangles-fei"></div><div class="triangles-feir"></div><div class="triangles-trei"></div><div class="triangles-dvai"></div><div class="triangles-ein"></div><div class="triangles-zero"></div></div></div><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">网络安全</span></a><a class="nav-page-title" href="/"><span class="site-name">内网安全-信息收集</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">内网安全-信息收集</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-04-11T11:50:10.000Z" title="Created 2024-04-11 19:50:10">2024-04-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-06-01T01:49:20.145Z" title="Updated 2024-06-01 09:49:20">2024-06-01</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="内网信息收集"><a href="#内网信息收集" class="headerlink" title="内网信息收集"></a>内网信息收集</h2><h3 id="一-收集本机信息"><a href="#一-收集本机信息" class="headerlink" title="一.收集本机信息"></a>一.收集本机信息</h3><h4 id="判断是否有域"><a href="#判断是否有域" class="headerlink" title="判断是否有域"></a>判断是否有域</h4><ul>
+<li><p><code>ipconfig /all</code>  在<code>Windows IP 配置</code>项下</p>
+</li>
+<li><p><code>Systeminfo</code> 在”域”词条下, 图中显示为WORKGROUP, 说明没有域<br><img src="https://github.com/Myprefer/ImageHost/blob/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-04-16%20162703.png?raw=true"></p>
+</li>
+<li><p><code>net time /domain</code></p>
+<ul>
+<li><p>存在域并且当前用户是域用户<br><img src="C:\Users\Myprefer\Desktop\640.jpg"></p>
+</li>
+<li><p>存在域，当前用户不是域用户<br>回显:</p>
+<pre><code>发生系统错误 5
+
+拒绝访问
+</code></pre>
+</li>
+<li><p>不存在域</p>
+<p><img src="https://github.com/Myprefer/ImageHost/blob/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-04-17%20152845.png?raw=true"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="查看当前登录域"><a href="#查看当前登录域" class="headerlink" title="查看当前登录域"></a>查看当前登录域</h4><ul>
+<li><p><code>net config workstation</code></p>
+<p><img src="https://github.com/Myprefer/ImageHost/blob/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-04-17%20153107.png?raw=true"></p>
+</li>
+</ul>
+<p>​		图中工作站域为workgroup, 则不存在域</p>
+<ul>
+<li><p>ping命令</p>
+<pre><code class="sh">for /L %I in(1,1,254) DO @ping -w 1 -n 1 192.168.110.%I | findstr &quot;TTL=&quot;
+</code></pre>
+</li>
+<li><p>使用工具扫描探测</p>
+<ul>
+<li><p><strong>nbtscan</strong> - 一个在本地或远程TCP&#x2F;IP网络上扫描开放的NETBIOS名称服务器的命令行工具</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/resurrecting-open-source-projects/nbtscan">resurrecting-open-source-projects&#x2F;nbtscan: Scan networks searching for NetBIOS information (github.com)</a></p>
+</li>
+<li><pre><code class="sh">用法: nbtscan-unixwiz [选项] 目标 [目标...]
+
+   目标可以是IP地址，DNS名称或地址的列表范围。
+   范围可以表示成“192.168.12.0/24”或“192.168.12.64-97”
+
+   -V        显示版本信息
+   -f        显示完整的NBT资源记录响应(推荐)
+   -H        生成HTTP请求头
+   -v        开启详细输出调试
+   -n        不查找响应IP地址的反向名称
+   -p &lt;n&gt;    绑定UDP端口(默认0)
+   -m        响应中包含MAC地址 (等同&#39;-f&#39;)
+   -T &lt;n&gt;    超时不响应 (默认2秒)
+   -w &lt;n&gt;    次写入后等待秒数 (默认10ms)
+   -t &lt;n&gt;    每个地址尝试次数(默认1次)
+   -P        以perl的hashref格式生成结果
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p><strong>arp-scan</strong> - ARP扫描工具</p>
+<ul>
+<li>使用: <a target="_blank" rel="noopener" href="https://blog.csdn.net/newbeixue/article/details/123111543">arp-scan使用-CSDN博客</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="域内端口扫描"><a href="#域内端口扫描" class="headerlink" title="域内端口扫描"></a>域内端口扫描</h4><ul>
+<li><p><strong>telnet</strong> 命令扫描</p>
+<pre><code class="sh">telnet &lt;address&gt; &lt;port&gt;
+</code></pre>
+</li>
+<li><p><strong>metasploit</strong> 的端口扫描模块<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44255856/article/details/97900038">渗透之metasploit技术-端口扫描，漏洞利用_search portscan-CSDN博客</a></p>
+</li>
+<li><p><strong>Nmap</strong></p>
+</li>
+</ul>
+<h4 id="查找域控制器"><a href="#查找域控制器" class="headerlink" title="查找域控制器"></a>查找域控制器</h4><ul>
+<li><code>net group &quot;Domain Controllers&quot; /domain</code></li>
+<li><code>nltest /DCLIST:&lt;域名&gt;</code></li>
+<li><code>nslookup -type=SRV _LDAP._tcp</code></li>
+<li><code>net time /domain</code></li>
+<li><code>netdom query pdc</code></li>
+</ul>
+<h4 id="获取域内用户和管理员信息"><a href="#获取域内用户和管理员信息" class="headerlink" title="获取域内用户和管理员信息"></a>获取域内用户和管理员信息</h4><ul>
+<li><p><strong>查询所有域用户列表</strong>：</p>
+<ul>
+<li><p><code>net user /domain</code></p>
+</li>
+<li><p><code>wmic useraccount get /all</code></p>
+</li>
+<li><p><code>dsquery user</code></p>
+</li>
+<li><p><code>net localgroup administrators /domain</code></p>
+</li>
+</ul>
+</li>
+<li><p><strong>查询域管理员用户组</strong>:</p>
+<ul>
+<li><code>net group &quot;Enterprise Admains&quot; /domain</code></li>
+</ul>
+</li>
+<li><p><strong>定位域管理员</strong>:</p>
+<ul>
+<li><p><strong>PsLoggedon</strong> - <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44159028/article/details/115439633">定位域管理员_psloggedon-CSDN博客</a><br><img src="https://github.com/Myprefer/ImageHost/blob/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-04-18%20105737.png?raw=true"></p>
+</li>
+<li><p><strong>AdFind</strong>- <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43571641/article/details/124263803">域内信息查询工具AdFind_adfind download-CSDN博客</a></p>
+</li>
+<li><p><strong>PVEFindADUser</strong> - <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44159028/article/details/115439633">定位域管理员 PVEFindADUser-CSDN博客</a><br><img src="https://github.com/Myprefer/ImageHost/blob/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-04-18%20110437.png?raw=true"></p>
+</li>
+</ul>
+</li>
+<li><p><strong>查找域管理进程</strong>:</p>
+<ul>
+<li><p>本机检查：</p>
+<ul>
+<li><pre><code class="sh">net group &quot;Domain Admins&quot;/domain    //获取域管理员列表
+</code></pre>
+</li>
+<li><pre><code class="sh">tasklist /v       // 列出本机所有进程及进程用户
+</code></pre>
+<p><img src="https://github.com/Myprefer/ImageHost/blob/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-04-18%20110732.png?raw=true"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>查询域控制器的域用户会话</strong>：</p>
+<ul>
+<li><p>收集域控制器的列表</p>
+<pre><code class="sh">net group &quot;Domain Controllers&quot;/domain
+</code></pre>
+</li>
+<li><p>收集域管理员列表</p>
+<pre><code class="sh">net group &quot;Domain Admins&quot;/domain
+</code></pre>
+</li>
+<li><p><strong>Netsess</strong><br><img src="https://github.com/Myprefer/ImageHost/blob/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-04-18%20111100.png?raw=true"></p>
+</li>
+</ul>
+</li>
+<li><p><strong>扫描远程系统上运行的任务：</strong></p>
+<ul>
+<li><p>前提是目标使用了本地域管理员共享账户</p>
+<pre><code class="sh">FOR /F %i in (ips.txt) DO @echo [+] %i &amp;&amp; @tasklist/V /S %i /U user /P password 2&gt;NUL &gt; output.txt &amp;&amp; FOR /F %n in(names.txt) DO @type output.txt | findstr %n &gt; NUL &amp;&amp; echo [!] %nwas found running a process on %i &amp;&amp; pause
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p><strong>扫描远程系统上NetBIOS信息</strong>：</p>
+<pre><code class="sh">for /F %i in (ips.txt) do @echo [+] Checking %i &amp;&amp;nbtstat -A %i 2&gt;NUL &gt;nbsessions.txt &amp;&amp; FOR /F %n in (admins.txt)DO @type nbsessions.txt | findstr /I %n &gt; NUL &amp;&amp; echo [!] %n wasfound logged into %i
+</code></pre>
+</li>
+</ul>
+<h4 id="利用PowerShell收集域内信息"><a href="#利用PowerShell收集域内信息" class="headerlink" title="利用PowerShell收集域内信息"></a>利用PowerShell收集域内信息</h4><h5 id="命令汇总"><a href="#命令汇总" class="headerlink" title="命令汇总"></a>命令汇总</h5><ul>
+<li><p>域信息收集</p>
+<pre><code class="powershell">net time /domain                            #查看时间服务器
+net config workstation                      #查询当前登录域及登录用户信息
+net user /domain                            #查询域内用户
+wmic useraccount get /all                   #查询域内用户的详细信息
+net user xie /domain                        #查看指定域用户xie的详细信息
+net view /domain                            #查看有几个域
+net view /domain:xxx                        #查看域内的主机
+net group /domain                           #查看域里面的组
+net group &quot;domain users&quot;  /domain           #查看域用户
+net group &quot;domain controllers&quot; /domain      #查看域控制器
+net group &quot;domain computers&quot; /domain        #查看域内所有的主机
+net group &quot;domain admins&quot;  /domain          #查看域管理员,该组内的成员对域控拥有完全控制权
+net group &quot;enterprise admins&quot; /domain       #查看企业管理组,该组内的成员对域控拥有完全控制权
+net group &quot;domain guest&quot;  /domain           #查看域访客组,权限较低
+ 
+nltest  /domain_trusts                      #查看域信任信息
+net accounts /domain                        #查询域密码策略
+whoami /user                                #查看用户SID和域SID，如用户的SID是：S-1-5-21-2189311154-2766837956-1982445477-520 则域SID则是去掉最后的520：S-1-5-21-2189311154-2766837956-1982445477
+ 
+以下命令只能在域控上查询
+dsquery user                                #查询目录中的用户
+dsquery computer                            #查询目录中的主机
+dsquery group                               #查询目录中的组.
+dsquery ou                                  #查询目录中的组织单元.
+dsquery site                                #查询目录中的站点
+dsquery server                              #查询域控
+dsquery contact                             #查询目录中的联系人
+dsquery subnet                              #查询目录中的子网
+dsquery quota                               #查询目录中的配额规定.
+dsquery partition                           #查询目录中的分区.
+dsquery *                                   #用通用的LDAP查询来查找目录中的任何对 
+dsquery server –domain xie.com | dsget server–dnsname –site     #搜索域内域控制器的DNS主机名和站点名
+dsquery computer domainroot –name -xp –limit 10      #搜索域内以-xp结尾的机器10台
+dsquery user domainroot –name admin -limit           #搜索域内以admin开头的用户10个
+</code></pre>
+</li>
+<li><p>查询域控的主机名</p>
+<pre><code class="powershell">方法一：net group &quot;domain controllers&quot; /domain       #这里查询结果后面会多一个 $ 
+方法二：nltest /DCLIST:xie.com
+方法三：net time /domain 
+方法四：nslookup -type=srv _ldap._tcp
+方法五：查看DNS服务器的地址，一般DNS服务器的IP就是域控的地址
+方法六：netdom query pdc                             #该命令只能在域控上执行
+方法七：dsquery server                               #该命令只能在域控上执行
+</code></pre>
+</li>
+</ul>
+<h5 id="利用PowerSploit"><a href="#利用PowerSploit" class="headerlink" title="利用PowerSploit"></a>利用PowerSploit</h5><ul>
+<li><p>PowerShell 常用的执行权限共有四种</p>
+<pre><code class="sh">Restricted：默认设置，不允许执行任何脚本。
+Allsigned：只能运行经过证书验证的脚本。
+Unrestricted：权限最高，可以执行任意脚本。
+RemoteSigned：本地脚本无限制，但是对来自网络的脚本必须经过签名。
+</code></pre>
+<p>在 PowerShell 中输入“Get-ExecutionPolicy”，可以看到当前权限<br><img src="https://github.com/Myprefer/ImageHost/blob/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-04-18%20112615.png?raw=true"></p>
+</li>
+<li><p>使用<strong>PowerSploit</strong>的<strong>PowerView</strong>脚本</p>
+<ul>
+<li><p>导入脚本</p>
+<pre><code class="sh">Import-Module .\PowerView.ps1
+</code></pre>
+</li>
+<li><p>功能:</p>
+<pre><code class="sh">
+Get-NetDomain    // 获取当前用户所在的域名称。
+Get-NetUser    // 返回所有用户的详细信息。
+Get-NetDomainController    // 获取所有域控制器。
+Get-NetComputer    // 获取所有域内机器的详细信息。
+Get-NetOU    // 获取域中的 OU 信息。
+Get-NetGroup    // 获取所有域内组和组成员信息。
+Get-NetFileServer    // 根据 SPN 获取当前域使用的文件服务器。
+Get-NetShare    // 获取当前域内所有网络共享。
+Get-NetSession    // 获取在指定服务器存在的会话信息。
+Get-NetRDPSession    // 获取在指定服务器存在的远程连接信息。
+Get-NetProcess    // 获取远程主机的进程信息。
+Get-UserEvent    // 获取指定用户的日志信息。
+Get-ADObject    // 获取活动目录的对象信息。
+Get-NetGPO    // 获取域所有组策略对象。
+Get-DomainPolicy    // 获取域默认或域控制器策略。
+Invoke-UserHunter    // 用于获取域用户登录计算机及该用户是否有本地管理权限。
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://myprefer.github.io">Myperfer</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://myprefer.github.io/post/%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86.html">https://myprefer.github.io/post/%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/post/%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8-%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87.html" title="权限提升"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">权限提升</div></div><div class="info-2"><div class="info-item-1">权限提升Web权限获取: 插件应用, 数据库, 中间件, 网站源码后台获取…  网站前台: REC漏洞, 代码执行, 命令执行, 写文件, 写shell 权限划分 Linux: 管理员UID为0: 系统的管理员用户 系统用户UID为1~999 普通用户UID从1000开始   Windows 用户及组: system(相当于root) administrator user guest等    具体的几种权限 后台权限: 获取方式: 爆破、注入猜解，弱口令等 ⼀般网站或应用后台智能操作应用的界面内容, 数据图片等信息，无法操作程序的源代码或服务器上的资源文件 权限提取: 通过账户密码等信息获取数据库等权限 通过文件编辑操作获取网站权限Webshell等     网站权限 获取方式: 写文件等 查看或修改（还要看有没有锁权）程序源代码，可以进行网站或应用的配置文件读取（接口配置信息、数据库配置信息等），还能收集服务器操作系统等相关的信息，为后续系统提权做准备   数据库权限 获取方式: 源码或配置文件泄露,...</div></div></div></a><a class="pagination-related" href="/post/%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html" title="内网安全-基本概念"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">内网安全-基本概念</div></div><div class="info-2"><div class="info-item-1">内网基本概念局域网又称内网, 是指在某一区域内由多台计算机互联成的计算机组。 工作组工作组（Work Group）就像一个可以自由进入和退出的社团，方便同组的计算机互相访问。没有集中管理作用，所有计算机都是对等的。  在一个网络内，可能有成百上千台电脑，如果这些电脑不进行分组，都列在“网上邻居”内，可想而知会有多么乱。 为了解决这一问题，早在Windows...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Myperfer</div><div class="author-info-description">By Myprefer</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">45</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E7%BD%91%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-number">1.</span> <span class="toc-text">内网信息收集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E6%94%B6%E9%9B%86%E6%9C%AC%E6%9C%BA%E4%BF%A1%E6%81%AF"><span class="toc-number">1.1.</span> <span class="toc-text">一.收集本机信息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%9C%89%E5%9F%9F"><span class="toc-number">1.1.1.</span> <span class="toc-text">判断是否有域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%99%BB%E5%BD%95%E5%9F%9F"><span class="toc-number">1.1.2.</span> <span class="toc-text">查看当前登录域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%9F%E5%86%85%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="toc-number">1.1.3.</span> <span class="toc-text">域内端口扫描</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%9F%9F%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-number">1.1.4.</span> <span class="toc-text">查找域控制器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%9F%9F%E5%86%85%E7%94%A8%E6%88%B7%E5%92%8C%E7%AE%A1%E7%90%86%E5%91%98%E4%BF%A1%E6%81%AF"><span class="toc-number">1.1.5.</span> <span class="toc-text">获取域内用户和管理员信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A9%E7%94%A8PowerShell%E6%94%B6%E9%9B%86%E5%9F%9F%E5%86%85%E4%BF%A1%E6%81%AF"><span class="toc-number">1.1.6.</span> <span class="toc-text">利用PowerShell收集域内信息</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB"><span class="toc-number">1.1.6.1.</span> <span class="toc-text">命令汇总</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%A9%E7%94%A8PowerSploit"><span class="toc-number">1.1.6.2.</span> <span class="toc-text">利用PowerSploit</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/FastAPI%E9%A1%B9%E7%9B%AE-%E4%BB%8E%E6%9E%84%E5%BB%BA%E5%88%B0%E9%83%A8%E7%BD%B2.html" title="FastAPI项目 从构建到部署">FastAPI项目 从构建到部署</a><time datetime="2024-09-24T09:31:51.000Z" title="Created 2024-09-24 17:31:51">2024-09-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/ML-%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html" title="ML 理论基础">ML 理论基础</a><time datetime="2024-09-07T16:31:52.000Z" title="Created 2024-09-08 00:31:52">2024-09-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/ML-%E7%8E%B0%E4%BB%A3%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.html" title="ML 现代卷积神经网络">ML 现代卷积神经网络</a><time datetime="2024-08-20T12:35:28.000Z" title="Created 2024-08-20 20:35:28">2024-08-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/ML-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.html" title="ML 卷积神经网络">ML 卷积神经网络</a><time datetime="2024-08-13T15:50:25.000Z" title="Created 2024-08-13 23:50:25">2024-08-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/ML-%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9.html" title="ML 模型选择">ML 模型选择</a><time datetime="2024-08-11T14:33:31.000Z" title="Created 2024-08-11 22:33:31">2024-08-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Myperfer</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

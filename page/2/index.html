@@ -1,2 +1,231 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/favicon.ico"><script type="module" crossorigin src="/static/js/120aa8f8.js"></script><link rel="stylesheet" href="/static/css/a14e1a22.css"><!-- hexo injector head_end start --><script rel="prefetch" async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script rel="preload" src="https://unpkg.com/blueimp-md5@^2.19.0/js/md5.min.js"></script><script rel="preload" src="https://unpkg.com/lodash@^4.17.21/lodash.min.js"></script><link rel="stylesheet" href="https://fonts.loli.net/css?family=Rubik" /><script rel="preload" src="https://unpkg.com/gitalk@^1.8.0/dist/gitalk.min.js"></script><link rel="stylesheet" href="https://unpkg.com/gitalk@^1.8.0/dist/gitalk.css"/><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="网络安全" type="application/atom+xml">
-</head><body id="body-container"><noscript><strong>We're sorry but this app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div></body></html>
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>网络安全 - 学习笔记</title><meta name="author" content="Myperfer"><meta name="copyright" content="Myperfer"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="By Myprefer">
+<meta property="og:type" content="website">
+<meta property="og:title" content="网络安全">
+<meta property="og:url" content="https://myprefer.github.io/page/2/index.html">
+<meta property="og:site_name" content="网络安全">
+<meta property="og:description" content="By Myprefer">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://myprefer.github.io/img/butterfly-icon.png">
+<meta property="article:author" content="Myperfer">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://myprefer.github.io/img/butterfly-icon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://myprefer.github.io/page/2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: undefined,
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '网络安全',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="网络安全" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="triangles-wrap"><div class="triangles-eiz"></div><div class="triangles-seiz"></div><div class="triangles-sei"></div><div class="triangles-fei"></div><div class="triangles-feir"></div><div class="triangles-trei"></div><div class="triangles-dvai"></div><div class="triangles-ein"></div><div class="triangles-zero"></div></div></div><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">网络安全</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">网络安全</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/ML-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92.html" title="ML 逻辑回归">ML 逻辑回归</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-08-02T13:24:59.000Z" title="Created 2024-08-02 21:24:59">2024-08-02</time></span></div><div class="content">逻辑回归逻辑回归用来解决分类问题, 如样本标签值为0或1, 则线性回归输出的值不太符合实际, 有较大的误差  对上述数据使用逻辑回归模型(这里使用了sigmoid函数), 可以得到更加精确的结果 决策边界在分类问题中, 把不同类别的数据点分开的界限 例如 视情况而定, 决策边界可以是一条直线, 也可以是更加复杂的曲线  逻辑回归中的代价函数逻辑回归中, 代价函数不是凹函数, 在梯度下降中, 有多个局部最小值, 因此不能使用梯度下降的方法求解全局最小值  损失函数 损失函数(loss function)是在一个训练样本的表现 把所有训练样本的损失加起来得到的代价函数(cost function)才能衡量模型在整个训练集上的表现   逻辑回归中的损失函数 简化后损失函数  代价函数为  逻辑回归中的梯度下降梯度下降公式  推导得出逻辑回归的梯度下降公式与线性回归的几乎一模一样, 但是他们本质是不同的, 因为函数f是不同的 过拟合 差拟合 : 无法很好的适应训练集, 会有较大的误差   泛化 : 指一个假设模型应用到新样本的能力, 我们追求泛化能力好的模型   过拟合 :...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/ML-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html" title="ML 基本概念">ML 基本概念</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-07-30T08:58:33.000Z" title="Created 2024-07-30 16:58:33">2024-07-30</time></span></div><div class="content">监督学习监督学习是已经知道数据的label 即 Learns from being given &#39;right answers&#39;.  从正确答案中学习  例如预测房价问题，给出了房子的面积和价格 例如过滤垃圾邮件, 训练时给出了邮件和它是否是垃圾 例如图像目标检测   回归问题是预测连续值的输出，例如预测房价  从无限多可能的输出数字中预测数字   分类问题是预测离散值输出，例如判断肿瘤是良性还是恶性, 判断是猫还是狗  从一小部分的可能的输出中预测类别    输入通常有多个    无监督学习无监督学习是不知道数据具体的含义，比如给定一些数据但不知道它们具体的信息，对于分类问题无监督学习可以得到多个不同的聚类，从而实现预测的功能。 即 Find something interesting in unlabeled data.   聚类 Group similar data points together.  例如google news对新闻的聚类,...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E8%AE%BE%E5%A4%87%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86.html" title="网络安全设备相关知识">网络安全设备相关知识</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-06-13T07:40:52.000Z" title="Created 2024-06-13 15:40:52">2024-06-13</time></span></div><div class="content">网络安全设备网络安全设备相关知识 | Myprefer’s Blog 防火墙作用 控制: 对进出数据进行限制(包过滤, 如ACL) 管理: 网络隔离, 进行安全防护(NAT) 记录: 对进出数据进行检查, 记录相关信息  功能 在网络协议栈的各个层次上实施网络访问控制机制  网络层: 包过滤 传输层: 电路级代理 应用层: 应用层代理&#x2F;网关   控制网络域间传送的数据流  检查网络流量 防止脆弱或不安全的协议和服务 防止内部网络信息外泄 对网络存取和访问进行监控和审计 强化网络安全策略, 集成网络安全防御机制    不足 无法防范内部的安全威胁(防外不防内 不能防范病毒 不能防范针对开放服务安全漏洞的渗透攻击 不能防范针对网络客户端程序的渗透攻击 不能防范基于隐蔽通道的特洛伊木马或僵尸网络  分类 按形态: 硬件&#x2F;软件 按技术: 包过滤(透明模式, 连交换机)&#x2F;代理(可作路由 ,NAT, ACL)  实现技术包过滤 实现机制: 依据数据包的级别标记来控制数据包  优点: 只分析数据包的IP, TCP&#x2F;UDP协议和端口,...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E5%9F%BA%E7%A1%80.html" title="网络拓扑基础">网络拓扑基础</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-06-10T08:02:31.000Z" title="Created 2024-06-10 16:02:31">2024-06-10</time></span></div><div class="content">网络拓扑基础 | Myprefer’s Blog 网络基础概念IP地址 IP地址在网络中用于标识一个节点(或者网络设备的接口) IP地址用于IP报文在网络中的寻址  IP地址就像现实中的地址, 可以标识网络中的一个节点, 数据就是通过它来找到目的地 IP地址格式192.168.1.1 网络位(192.168.1) + 主机位 由子网掩码决定网络位长度  192.168.1.1 — 255.255.255.0(掩码) 192.168.1.1 — 255.255.0.0(掩码)   配置IP地址interface &lt;接口&gt; ip address 192.168.1.1 255.255.255.0  Dhcp 作用: 自动给电脑&#x2F;手机配置IP地址  DNS域名系统 路由技术基础网关不同网段之间的通信需要经过网关 路由器路由器的转发原理是通过路由表来判断数据包从哪个接口发出, 实现数据包的转发  显示路由表: dis ip routing-table  &lt;ip&gt;  TCP 可靠性高, 三次握手 延迟高  适合对文件传输的完整性高,...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8-%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86.html" title="内网安全-网络知识">内网安全-网络知识</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-06-01T03:11:57.000Z" title="Created 2024-06-01 11:11:57">2024-06-01</time></span></div><div class="content">内网安全-网络知识 隧道技术: 解决不出网协议上线的问题(利用出网协议进行封装出网)(如TCP -&gt; UDP)  代理技术: 解决网络通讯不通的问题(利用跳板机建立节点后续操作)  连接方向: 正向&amp;方向(内找外&#x2F;外找内)   </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/WEB%E6%94%BB%E9%98%B2-%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%89%E5%85%A8.html" title="WEB攻防-验证码安全">WEB攻防-验证码安全</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-05-07T09:32:21.000Z" title="Created 2024-05-07 17:32:21">2024-05-07</time></span></div><div class="content">验证码安全找回密码客户端回显&amp;Response状态值&amp;修改重定向 用回显状态判断-res前端判断不安全  不安全方式:  错误验证-&gt;服务器返回状态&lt;3&gt;-&gt;浏览器   错误  错误验证-&gt;服务器返回状态&lt;3&gt;-&gt;burp代理抓包改为&lt;1&gt;-&gt;浏览器   正确  --客户端验证为准   安全方式: 错误验证-&gt;服务器返回状态&lt;3&gt;-&gt;burp代理抓包改为&lt;1&gt;-&gt;浏览器显示正确-&gt;服务器后端验证错误-&gt;失败  --服务器验证为准     用用户名重定向-修改标示绕过验证  验证码回显显示验证码泄漏验证虚设  数据包中就有没有加密或加密过的验证码   验证码简单机制验证码过于简单爆破  如四位数字简单验证码(0000~9999), 仅10000钟可能, 如没有次数限制,...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8-%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87.html" title="权限提升">权限提升</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-04-18T03:44:47.000Z" title="Created 2024-04-18 11:44:47">2024-04-18</time></span></div><div class="content">权限提升Web权限获取: 插件应用, 数据库, 中间件, 网站源码后台获取…  网站前台: REC漏洞, 代码执行, 命令执行, 写文件, 写shell 权限划分 Linux: 管理员UID为0: 系统的管理员用户 系统用户UID为1~999 普通用户UID从1000开始   Windows 用户及组: system(相当于root) administrator user guest等    具体的几种权限 后台权限: 获取方式: 爆破、注入猜解，弱口令等 ⼀般网站或应用后台智能操作应用的界面内容, 数据图片等信息，无法操作程序的源代码或服务器上的资源文件 权限提取: 通过账户密码等信息获取数据库等权限 通过文件编辑操作获取网站权限Webshell等     网站权限 获取方式: 写文件等 查看或修改（还要看有没有锁权）程序源代码，可以进行网站或应用的配置文件读取（接口配置信息、数据库配置信息等），还能收集服务器操作系统等相关的信息，为后续系统提权做准备   数据库权限 获取方式: 源码或配置文件泄露,...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86.html" title="内网安全-信息收集">内网安全-信息收集</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-04-11T11:50:10.000Z" title="Created 2024-04-11 19:50:10">2024-04-11</time></span></div><div class="content">内网信息收集一.收集本机信息判断是否有域 ipconfig /all  在Windows IP 配置项下  Systeminfo 在”域”词条下, 图中显示为WORKGROUP, 说明没有域  net time /domain  存在域并且当前用户是域用户  存在域，当前用户不是域用户回显: 发生系统错误 5  拒绝访问   不存在域      查看当前登录域 net config workstation    ​		图中工作站域为workgroup, 则不存在域  ping命令 for /L %I in(1,1,254) DO @ping -w 1 -n 1 192.168.110.%I | findstr &quot;TTL=&quot;   使用工具扫描探测  nbtscan - 一个在本地或远程TCP&#x2F;IP网络上扫描开放的NETBIOS名称服务器的命令行工具  resurrecting-open-source-projects&#x2F;nbtscan: Scan networks searching for NetBIOS information...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html" title="内网安全-基本概念">内网安全-基本概念</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-04-10T07:41:44.000Z" title="Created 2024-04-10 15:41:44">2024-04-10</time></span></div><div class="content">内网基本概念局域网又称内网, 是指在某一区域内由多台计算机互联成的计算机组。 工作组工作组（Work Group）就像一个可以自由进入和退出的社团，方便同组的计算机互相访问。没有集中管理作用，所有计算机都是对等的。  在一个网络内，可能有成百上千台电脑，如果这些电脑不进行分组，都列在“网上邻居”内，可想而知会有多么乱。 为了解决这一问题，早在Windows...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE.html" title="未授权访问">未授权访问</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-03-26T07:47:00.000Z" title="Created 2024-03-26 15:47:00">2024-03-26</time></span></div><div class="content">漏洞简述描述 未授权访问漏洞，是在攻击者没有获取到登录权限或未授权的情况下，或者不需要输入密码，即可通过直接输入网站控制台主页面地址，或者不允许查看的链接便可进行访问，同时进行操作。  危害 泄露用户信息，系统信息 某些服务和系统中，未授权访问还可以执行系统命令，操作系统文件，导致系统的整体安全遭到破坏  漏洞发现判断服务开放 Nmap端口扫描 组合猜测  判断服务类型 数据库 文件传输 远程控制 数据通信  漏洞实例MySQL 环境:Mysql 身份认证绕过漏洞（CVE-2012-2122）  原理:  当连接MariaDB&#x2F;MySQL时，输入的密码会与期望的正确密码比较，由于不正确的处理，会导致即便是memcmp()返回一个非零值，也会使MySQL认为两个密码是相同的。也就是说只要知道用户名，不断尝试就能够直接登入SQL数据库。   利用: for i in `seq 1 1000`; do mysql -uroot -pwrong -h your-ip -P3306 ; done    Hadoop 环境:Vulhub - Docker-Compose file...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#content-inner">5</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Myperfer</div><div class="author-info-description">By Myprefer</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">45</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/FastAPI%E9%A1%B9%E7%9B%AE-%E4%BB%8E%E6%9E%84%E5%BB%BA%E5%88%B0%E9%83%A8%E7%BD%B2.html" title="FastAPI项目 从构建到部署">FastAPI项目 从构建到部署</a><time datetime="2024-09-24T09:31:51.000Z" title="Created 2024-09-24 17:31:51">2024-09-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/ML-%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html" title="ML 理论基础">ML 理论基础</a><time datetime="2024-09-07T16:31:52.000Z" title="Created 2024-09-08 00:31:52">2024-09-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/ML-%E7%8E%B0%E4%BB%A3%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.html" title="ML 现代卷积神经网络">ML 现代卷积神经网络</a><time datetime="2024-08-20T12:35:28.000Z" title="Created 2024-08-20 20:35:28">2024-08-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/ML-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.html" title="ML 卷积神经网络">ML 卷积神经网络</a><time datetime="2024-08-13T15:50:25.000Z" title="Created 2024-08-13 23:50:25">2024-08-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/ML-%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9.html" title="ML 模型选择">ML 模型选择</a><time datetime="2024-08-11T14:33:31.000Z" title="Created 2024-08-11 22:33:31">2024-08-11</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/" style="font-size: 1.37em; color: #99a4b2">基础入门</a> <a href="/tags/PHP%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: #999">PHP基础</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 1.1em; color: #999">代码审计</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 1.5em; color: #99a9bf">网络安全</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: #999">前端基础</a> <a href="/tags/XSS%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: #999">XSS基础</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E6%9C%AF%E8%AF%AD/" style="font-size: 1.1em; color: #999">常用术语</a> <a href="/tags/Python%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: #999">Python基础</a> <a href="/tags/%E8%A7%86%E9%A2%91%E4%BC%9A%E8%AE%AE/" style="font-size: 1.3em; color: #99a1ac">视频会议</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 1.1em; color: #999">渗透测试</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" style="font-size: 1.5em; color: #99a9bf">学习日志</a> <a href="/tags/%E7%A9%B7%E4%B8%BE%E7%88%86%E7%A0%B4/" style="font-size: 1.1em; color: #999">穷举爆破</a> <a href="/tags/SQL%E6%B3%A8%E5%85%A5/" style="font-size: 1.1em; color: #999">SQL注入</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" style="font-size: 1.17em; color: #999c9f">信息收集</a> <a href="/tags/%E5%B0%8F%E8%BF%AA%E5%AE%89%E5%85%A8/" style="font-size: 1.43em; color: #99a6b9">小迪安全</a> <a href="/tags/WEB%E6%94%BB%E9%98%B2/" style="font-size: 1.23em; color: #999ea6">WEB攻防</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%86%E7%B1%BB/" style="font-size: 1.1em; color: #999">漏洞分类</a> <a href="/tags/PHP%E5%BC%80%E5%8F%91/" style="font-size: 1.1em; color: #999">PHP开发</a> <a href="/tags/SQL%E5%9F%BA%E7%A1%80/" style="font-size: 1.17em; color: #999c9f">SQL基础</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
+      <a class="card-more-btn" href="/archives/" title="View More"><i class="fas fa-angle-right"></i></a>
+    </div>
+    <ul class="card-archive-list">
+  
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/09/">
+          <span class="card-archive-list-date">September 2024</span>
+          <span class="card-archive-list-count">2</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/08/">
+          <span class="card-archive-list-date">August 2024</span>
+          <span class="card-archive-list-count">9</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/07/">
+          <span class="card-archive-list-date">July 2024</span>
+          <span class="card-archive-list-count">1</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/06/">
+          <span class="card-archive-list-date">June 2024</span>
+          <span class="card-archive-list-count">3</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/05/">
+          <span class="card-archive-list-date">May 2024</span>
+          <span class="card-archive-list-count">1</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/04/">
+          <span class="card-archive-list-date">April 2024</span>
+          <span class="card-archive-list-count">3</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/03/">
+          <span class="card-archive-list-date">March 2024</span>
+          <span class="card-archive-list-count">6</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/02/">
+          <span class="card-archive-list-date">February 2024</span>
+          <span class="card-archive-list-count">10</span>
+        </a>
+      </li>
+    </ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">45</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-01-29T07:15:22.541Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Myperfer</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

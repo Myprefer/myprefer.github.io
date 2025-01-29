@@ -1,2 +1,231 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/favicon.ico"><script type="module" crossorigin src="/static/js/120aa8f8.js"></script><link rel="stylesheet" href="/static/css/a14e1a22.css"><!-- hexo injector head_end start --><script rel="prefetch" async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script rel="preload" src="https://unpkg.com/blueimp-md5@^2.19.0/js/md5.min.js"></script><script rel="preload" src="https://unpkg.com/lodash@^4.17.21/lodash.min.js"></script><link rel="stylesheet" href="https://fonts.loli.net/css?family=Rubik" /><script rel="preload" src="https://unpkg.com/gitalk@^1.8.0/dist/gitalk.min.js"></script><link rel="stylesheet" href="https://unpkg.com/gitalk@^1.8.0/dist/gitalk.css"/><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="网络安全" type="application/atom+xml">
-</head><body id="body-container"><noscript><strong>We're sorry but this app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div></body></html>
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>网络安全 - 学习笔记</title><meta name="author" content="Myperfer"><meta name="copyright" content="Myperfer"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="By Myprefer">
+<meta property="og:type" content="website">
+<meta property="og:title" content="网络安全">
+<meta property="og:url" content="https://myprefer.github.io/index.html">
+<meta property="og:site_name" content="网络安全">
+<meta property="og:description" content="By Myprefer">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://myprefer.github.io/img/butterfly-icon.png">
+<meta property="article:author" content="Myperfer">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://myprefer.github.io/img/butterfly-icon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://myprefer.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: undefined,
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '网络安全',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="网络安全" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="triangles-wrap"><div class="triangles-eiz"></div><div class="triangles-seiz"></div><div class="triangles-sei"></div><div class="triangles-fei"></div><div class="triangles-feir"></div><div class="triangles-trei"></div><div class="triangles-dvai"></div><div class="triangles-ein"></div><div class="triangles-zero"></div></div></div><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">网络安全</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">网络安全</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/FastAPI%E9%A1%B9%E7%9B%AE-%E4%BB%8E%E6%9E%84%E5%BB%BA%E5%88%B0%E9%83%A8%E7%BD%B2.html" title="FastAPI项目 从构建到部署">FastAPI项目 从构建到部署</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-09-24T09:31:51.000Z" title="Created 2024-09-24 17:31:51">2024-09-24</time></span></div><div class="content">FastAPI项目 从构建到部署项目框架基本结构FastAPI  路由, 视图  APIRouter Include_router Jinja2   中间件  cookie session request, response   安全  JWT RBAC Depends Exception   第三方库  短信 支付(微信, 支付宝) 数据库(MySQL, pg) 缓存(File, Redis)    项目架构  项目基础构建事件监听application.add_event_handler(&quot;startup&quot;, startup(application)) application.add_event_handler(&quot;shutdown&quot;, stopping(application))  启动时调用startup()函数, 关闭时调用stopping()函数 startup函数: def startup(app: FastAPI) -&gt; Callable:     &quot;&quot;&quot;     FastApi...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/ML-%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html" title="ML 理论基础">ML 理论基础</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-09-07T16:31:52.000Z" title="Created 2024-09-08 00:31:52">2024-09-08</time></span></div><div class="content">理论基础讨论前向传播和反向传播的流程？前向传播  在输入层输入特征向量, 传递到隐藏层 在隐藏层不断计算出每一层神经元得到的结果 通过激活函数得到的输出 将输出传递到下一层 输出层: 在隐藏层最后的输出经过激活函数后, 得到最终的预测值  反向传播  通过前向传播得到网络的预测值, 利用损失函数, 计算输出层的损失  从输出层开始, 计算损失对输出层的梯度, 并逐层反向传播该梯度  其后每一层通过求导的链式法则, 利用上一层传递来的梯度, 计算当前层的损失函数对各参数的梯度  根据计算得到的梯度, 利用优化算法(如梯度下降), 计算并更新参数, 减少损失值   解释梯度下降法, 并结合梯度下降法讲讲神经网络工作的流程解释梯度下降法 梯度下降算法时一种用于最小化损失函数的优化算法, 通过调整神经网络中的参数来优化模型 梯度时损失函数对参数的(导数)偏导, 直观体现为损失函数下降最快的方向, 沿着该方向调整参数可以使损失减小  算法公式为, 其中α为学习率, J为代价函数  神经网络工作流程  初始化参数, 如对y = W * x + b的W和b进行随机初始化 输入数据,...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/ML-%E7%8E%B0%E4%BB%A3%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.html" title="ML 现代卷积神经网络">ML 现代卷积神经网络</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-08-20T12:35:28.000Z" title="Created 2024-08-20 20:35:28">2024-08-20</time></span></div><div class="content">现代卷积神经网络LeNet AlexNetAlexNet和LeNet的设计理念和架构非常相似，但也存在显著差异。本质上来说，AlexNet是改进后的更深更大的LeNet 主要改进:  全连接层的隐藏层后加入了丢弃层  sigmoid –&gt; ReLU (减缓梯度消失)  平均池化 –&gt; 最大池化  进行了数据增强    LeNet与AlexNet VGG(使用块的网络)VGG块：可看作更大更深的AlexNet VGG使用可重复的卷积块来构建深度卷积神经网络 VGG架构：  替换掉AlexNet整个卷积的架构，形成n个VGG块串在一起, 多个VGG块后接全连接层  不同的卷积块个数和超参数可以达到不同复杂度的变种(VGG16, VGG19)    vgg块的实现 def vgg_block(num_convs, in_channels, out_channels):     layers = []     for _ in range(num_convs):         layers.append(nn.Conv2d(in_channels,...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/ML-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.html" title="ML 卷积神经网络">ML 卷积神经网络</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-08-13T15:50:25.000Z" title="Created 2024-08-13 23:50:25">2024-08-13</time></span></div><div class="content">卷积神经网络卷积层 在卷积层中, 使用卷积核在输入图像上滑动, 并计算卷积核与局部图像块之间的点积, 生成特征图, 这一过程称为卷积。 如图, 3x3的卷积核在4x4的图像上滑动, 生成2x2的特征图  通过这种方式，卷积层能够捕捉图像中的边缘、纹理等局部特征。  例如，一个简单的卷积核, 用于检测水平边缘:  $$K &#x3D; \begin{pmatrix} -1 &amp; -1 &amp; -1 \ 0 &amp; 0 &amp; 0 \ 1 &amp; 1 &amp; 1 \end{pmatrix}$$  图像上某一局部区域的像素值在卷积操作中，如果存在水平方向上的亮度变化（例如，从黑色像素到白色像素），卷积的结果就会是一个较大的值，表示该区域存在水平边缘  卷积核和偏移(b)是可学习的参数 卷积核的大小是超参数 填充和步幅(Padding, strides)  填充和步幅是卷积层的超参数 填充正在输入周围添加额外的行&#x2F;列, 来控制输出的减少量 步幅是每次滑动卷积核的步长,...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/ML-%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9.html" title="ML 模型选择">ML 模型选择</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-08-11T14:33:31.000Z" title="Created 2024-08-11 22:33:31">2024-08-11</time></span></div><div class="content">训练误差和泛化误差 训练误差: 模型在训练数据上的误差 泛化误差: 模型在新数据上的误差  验证数据集和测试数据集 验证数据集: 原来评估模型好坏 验证数据集用于模型训练过程中进行验证和调参。通过在验证集上评估模型性能，可以监控模型是否过拟合，并且通过验证集来选择最优的超参数（如学习率、正则化强度等） 通常占数据集的10%-15%。验证集的数据不参与训练，主要用于在训练期间监控模型性能。   测试数据集 测试数据集用于在模型训练完毕后评估其泛化能力。这部分数据从未在模型训练或验证过程中使用过，因此可以较为客观地评估模型在真实世界中的表现。    K折交叉验证 在没有足够多数据时使用 算法: 将心力衰竭分为k块 For i &#x3D; 1, …, k 使用第i块作为验证数据集, 其余为训练数据集   报告k个验证集误差的平均    模型容量  指拟合各种函数的能力  低容量的模型难以拟合训练数据 高容量的模型可以记住所有的训练数据  模型容量的影响  数据复杂度 样本个数  每个样本的元素个数  时间, 空间结构  多样性   </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/ML-%E5%A4%9A%E5%B1%82%E6%84%9F%E7%9F%A5%E6%9C%BA.html" title="ML 多层感知机">ML 多层感知机</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-08-11T08:53:57.000Z" title="Created 2024-08-11 16:53:57">2024-08-11</time></span></div><div class="content">多层感知机最简单的深度学习网络称为多层感知机 感知机(PLA)感知机只有输入层和输出层, 是单个神经元模型, 是一个线性二分类器, 但是不能对非线性的数据进行有效的分类, 感知机公式:  感知机结构如下, 只有输入层, 输出层 多层感知机(MLP)多层感知机由感知机推广而来,  有多个层, 通常包括一个输入层, 一个或多个隐藏层, 一个输出层  </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/ML-%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C.html" title="ML 数据操作">ML 数据操作</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-08-10T03:09:24.000Z" title="Created 2024-08-10 11:09:24">2024-08-10</time></span></div><div class="content">数据操作数组例:  零维 一个数字  一维 多个数字  二维 矩阵(长*宽)  三维 RGB图片(通道*长*宽)  四维 图片批量(通道*长*宽*批量)  五维 视频(通道*长*宽*批量*时间)   使用shape属性访问张量的形状和元素总数 x = tensor([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11]) x.shape = torch.Size([12])  reshape函数可以改变张量的形状 X = x.reshape(3, 4)  X = tensor([[ 0,  1,  2,  3],         [ 4,  5,  6,  7],         [ 8,  9, 10, 11]])  广播机制形状不同的数组可以调用广播机制执行按元素操作  如 a = tensor([[0],             [1],             [2]])  b = tensor([[0, 1]])  如果执行a + b 计算时, a, b会进行复制变换(实际没有改变) a = tensor([[0, 0],  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/ML-%E5%A4%9A%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98.html" title="ML 多分类问题">ML 多分类问题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-08-04T09:32:35.000Z" title="Created 2024-08-04 17:32:35">2024-08-04</time></span></div><div class="content">多分类问题从回归到分类回归 单连续数值输出 跟真实值的区别作为损失  分类 通常多个输出 输出i时预测为第i类的置信度(概率)  softmax 回归算法Softmax回归，又称多类别逻辑回归，是一种广泛用于多分类问题的算法。它是逻辑回归的扩展，能够处理具有多个类别的分类任务。 Softmax 回归算法的模型可以表示为：   在二分类问题中, 逻辑回归使用sigmoid函数将输入映射到一个概率值, 在多分类问题中, 我们使用softmax函数将输入映射到一组的概率值, 这些概率值的和为1 损失函数Softmax回归使用交叉熵损失函数来衡量预测结果和真实标签之间的差距  一般的表示为  其中 x 是输入特征，y 是输出类别, yk表示真实标签的 one-hot 编码形式，K 是类别总数。 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/ML-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.html" title="ML 神经网络">ML 神经网络</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-08-03T08:43:22.000Z" title="Created 2024-08-03 16:43:22">2024-08-03</time></span></div><div class="content">神经网络用于识别复杂模式和数据中的特征。是机器学习和深度学习中的基础工具，特别适用于处理图像、语音和文本等非结构化数据。 层（Layer）神经元按层组织，每一层的神经元与上一层的神经元相连。通常，神经网络包括输入层、隐藏层和输出层。  输入层：接收外部数据作为输入。  隐藏层：通过多个隐藏层进行复杂的特征提取和模式识别。  输出层：输出最终的预测结果或分类结果。    每一层的输出成为下一层的输入  激活函数在多层神经网络中, 上层节点的输出和下层节点的输入之间存在一个函数关系, 这个函数称为激活函数 激活函数的作用如果不使用激活函数(或者是只使用线性激活函数), 那么每一层节点的输入都是上层输出的线性变换, 这种情况下, 无论神经网络有多少层, 输出都只会是输入的线性组合, 网络的效果与没有隐藏层时的效果差不多, 网络的逼近能力就非常有限  如果引入非线性函数作为激活函数, 那么网络的表达能力就会非常强大, 几乎可以逼近任何函数 激活函数的选择 sigomoid$$\sigma(x) &#x3D; \frac{1}{1 +...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/ML-%E6%AD%A3%E5%88%99%E5%8C%96.html" title="ML 正则化">ML 正则化</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-08-03T06:40:12.000Z" title="Created 2024-08-03 14:40:12">2024-08-03</time></span></div><div class="content">正则化在机器学习模型中，正则化通过在模型的损失函数中添加一个正则项来实现。这些惩罚项通常会限制模型的复杂度，使模型更加简单，从而更好地泛化到新数据。 在代价函数中加入正则项，通过lambda的来平衡拟合程度和参数的大小，约大越容易出现过拟合的现象。 引入正则项后的代价函数:  λ 为正则化参数  如果 λ 很大，正则化项的影响就很大，模型参数会被压得很小，导致模型变得简单（比如变成一条平滑的线） 如果 λ 很小，正则化项的影响就很小，模型参数可以自由调整，模型可能会变得复杂。  工作原理如果有很多参数，我们不清楚哪个参数是高阶项，即不知道惩罚哪个能获得更好拟合的结果，因此引入正则化项统一惩罚参数(正则化参数)以得到较为简单的函数 统一惩罚能得到简单结果是因为，高阶项受到惩罚的效果会更强，反映在图像上就是使其影响变弱  在线性回归中, 正则化使参数w每次都与一个小于1的数相乘, 使参数w在每次迭代中收缩一点   可以直观的理解为，我们最小化损失函数就是求蓝圈+红圈的和的最小值，而这个值通在很多情况下是两个曲面相交的地方。 Dropout好的模型应该对输入数据的扰动更鲁棒,...</div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#content-inner">5</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Myperfer</div><div class="author-info-description">By Myprefer</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">45</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/FastAPI%E9%A1%B9%E7%9B%AE-%E4%BB%8E%E6%9E%84%E5%BB%BA%E5%88%B0%E9%83%A8%E7%BD%B2.html" title="FastAPI项目 从构建到部署">FastAPI项目 从构建到部署</a><time datetime="2024-09-24T09:31:51.000Z" title="Created 2024-09-24 17:31:51">2024-09-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/ML-%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html" title="ML 理论基础">ML 理论基础</a><time datetime="2024-09-07T16:31:52.000Z" title="Created 2024-09-08 00:31:52">2024-09-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/ML-%E7%8E%B0%E4%BB%A3%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.html" title="ML 现代卷积神经网络">ML 现代卷积神经网络</a><time datetime="2024-08-20T12:35:28.000Z" title="Created 2024-08-20 20:35:28">2024-08-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/ML-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.html" title="ML 卷积神经网络">ML 卷积神经网络</a><time datetime="2024-08-13T15:50:25.000Z" title="Created 2024-08-13 23:50:25">2024-08-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/ML-%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9.html" title="ML 模型选择">ML 模型选择</a><time datetime="2024-08-11T14:33:31.000Z" title="Created 2024-08-11 22:33:31">2024-08-11</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/" style="font-size: 1.37em; color: #99a4b2">基础入门</a> <a href="/tags/PHP%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: #999">PHP基础</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 1.1em; color: #999">代码审计</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 1.5em; color: #99a9bf">网络安全</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: #999">前端基础</a> <a href="/tags/XSS%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: #999">XSS基础</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E6%9C%AF%E8%AF%AD/" style="font-size: 1.1em; color: #999">常用术语</a> <a href="/tags/Python%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: #999">Python基础</a> <a href="/tags/%E8%A7%86%E9%A2%91%E4%BC%9A%E8%AE%AE/" style="font-size: 1.3em; color: #99a1ac">视频会议</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 1.1em; color: #999">渗透测试</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" style="font-size: 1.5em; color: #99a9bf">学习日志</a> <a href="/tags/%E7%A9%B7%E4%B8%BE%E7%88%86%E7%A0%B4/" style="font-size: 1.1em; color: #999">穷举爆破</a> <a href="/tags/SQL%E6%B3%A8%E5%85%A5/" style="font-size: 1.1em; color: #999">SQL注入</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" style="font-size: 1.17em; color: #999c9f">信息收集</a> <a href="/tags/%E5%B0%8F%E8%BF%AA%E5%AE%89%E5%85%A8/" style="font-size: 1.43em; color: #99a6b9">小迪安全</a> <a href="/tags/WEB%E6%94%BB%E9%98%B2/" style="font-size: 1.23em; color: #999ea6">WEB攻防</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%86%E7%B1%BB/" style="font-size: 1.1em; color: #999">漏洞分类</a> <a href="/tags/PHP%E5%BC%80%E5%8F%91/" style="font-size: 1.1em; color: #999">PHP开发</a> <a href="/tags/SQL%E5%9F%BA%E7%A1%80/" style="font-size: 1.17em; color: #999c9f">SQL基础</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
+      <a class="card-more-btn" href="/archives/" title="View More"><i class="fas fa-angle-right"></i></a>
+    </div>
+    <ul class="card-archive-list">
+  
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/09/">
+          <span class="card-archive-list-date">September 2024</span>
+          <span class="card-archive-list-count">2</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/08/">
+          <span class="card-archive-list-date">August 2024</span>
+          <span class="card-archive-list-count">9</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/07/">
+          <span class="card-archive-list-date">July 2024</span>
+          <span class="card-archive-list-count">1</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/06/">
+          <span class="card-archive-list-date">June 2024</span>
+          <span class="card-archive-list-count">3</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/05/">
+          <span class="card-archive-list-date">May 2024</span>
+          <span class="card-archive-list-count">1</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/04/">
+          <span class="card-archive-list-date">April 2024</span>
+          <span class="card-archive-list-count">3</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/03/">
+          <span class="card-archive-list-date">March 2024</span>
+          <span class="card-archive-list-count">6</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/02/">
+          <span class="card-archive-list-date">February 2024</span>
+          <span class="card-archive-list-count">10</span>
+        </a>
+      </li>
+    </ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">45</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-01-29T07:15:22.541Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Myperfer</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

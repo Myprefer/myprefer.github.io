@@ -1,2 +1,231 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/favicon.ico"><script type="module" crossorigin src="/static/js/120aa8f8.js"></script><link rel="stylesheet" href="/static/css/a14e1a22.css"><!-- hexo injector head_end start --><script rel="prefetch" async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script rel="preload" src="https://unpkg.com/blueimp-md5@^2.19.0/js/md5.min.js"></script><script rel="preload" src="https://unpkg.com/lodash@^4.17.21/lodash.min.js"></script><link rel="stylesheet" href="https://fonts.loli.net/css?family=Rubik" /><script rel="preload" src="https://unpkg.com/gitalk@^1.8.0/dist/gitalk.min.js"></script><link rel="stylesheet" href="https://unpkg.com/gitalk@^1.8.0/dist/gitalk.css"/><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="网络安全" type="application/atom+xml">
-</head><body id="body-container"><noscript><strong>We're sorry but this app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div></body></html>
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>网络安全 - 学习笔记</title><meta name="author" content="Myperfer"><meta name="copyright" content="Myperfer"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="By Myprefer">
+<meta property="og:type" content="website">
+<meta property="og:title" content="网络安全">
+<meta property="og:url" content="https://myprefer.github.io/page/4/index.html">
+<meta property="og:site_name" content="网络安全">
+<meta property="og:description" content="By Myprefer">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://myprefer.github.io/img/butterfly-icon.png">
+<meta property="article:author" content="Myperfer">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://myprefer.github.io/img/butterfly-icon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://myprefer.github.io/page/4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: undefined,
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '网络安全',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="网络安全" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="triangles-wrap"><div class="triangles-eiz"></div><div class="triangles-seiz"></div><div class="triangles-sei"></div><div class="triangles-fei"></div><div class="triangles-feir"></div><div class="triangles-trei"></div><div class="triangles-dvai"></div><div class="triangles-ein"></div><div class="triangles-zero"></div></div></div><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">网络安全</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">网络安全</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/%E6%BC%8F%E6%B4%9E%E5%88%86%E7%B1%BB.html" title="漏洞分类">漏洞分类</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-02-14T08:23:14.000Z" title="Created 2024-02-14 16:23:14">2024-02-14</time></span></div><div class="content">暴力破解漏洞 通过系统地组合所有可能性（例如登录时用到的账户名、密码），尝试所有的可能性破解用户的账户名、密码等敏感信息，经常是使用自动化脚本组合出正确的用户名和密码。简单理解： 连续性尝试 + 字典 + 自动化  流程 确认登录接口的脆弱性 比如:尝试登录–抓包–观察验证元素和response信息   对字典进行优化 根据注册提示信息进行优化 管理员   工具自动化操作  XSS跨站脚本介绍 跨站脚本，英文全称：Cross-Site Scripting  通过输入可以被解析的特殊字符串, 如 &lt;/p&gt;&lt;script&gt;alert(&#39;this is an alart&#39;);&lt;/script&gt;&lt;p&gt;  其中script标签内的代码会被执行  分类: 反射型XSS, 储存型XSS,...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/Pikachu%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%93%8D.html" title="Pikachu靶场实操">Pikachu靶场实操</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-02-04T01:57:16.000Z" title="Created 2024-02-04 09:57:16">2024-02-04</time></span></div><div class="content">Pikachu靶场实操暴力破解概述连续性尝试+字典+自动化 字典 常用的账号密码 社工库 算法生成  暴力破解漏洞 是否要求复杂密码 是否使用安全的验证码 是否进行次数限制 是否采用双元素认证  验证码 防止登录暴力破解 防止机器恶意注册  测试流程 确认登录接口的脆弱性 比如:尝试登录–抓包–观察验证元素和response信息   对字典进行优化 根据注册提示信息进行优化 管理员   工具自动化操作  Pikachu关卡基于表单的暴力破解此关没有设置验证码等防范措施, 使用Brup Suite的Intruder功能, 如果response中没有username or password is not exists可以说明破解成功 步骤:  尝试手动提交表单, 使用brupsuite拦截 发送到Intruder, 关闭拦截, 配置好payload和字典, 开始进行破解(Cluster bomb) 对结果按照长度或有无username or password is not exists进行整理, 发现test&#x2F;abc123和admin&#x2F;123456可能是正确的,...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/%E5%B0%8F%E8%BF%AA%E5%AE%89%E5%85%A8-P4.html" title="小迪安全-P4">小迪安全-P4</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-02-03T12:01:45.000Z" title="Created 2024-02-03 20:01:45">2024-02-03</time></span></div><div class="content">加密识别(猜测)算法编码类型 看密文位数 看密文的特征(数字,  字母,  大小写,  符号等) 看当前密文存在的地方(Web,  数据库,  操作系统等应用)  获取 ( 猜测到 )加密算法后就 ( 可能 ) 可以进行解密 加密平台md5在线解密破解 在线DES加密解密、DES在线加密解密) 总结30余种加密编码类型的密文特征分析（建议收藏） (qq.com) CTF中常见密码题解密网站总结_CTF解密网站-CSDN博客 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/%E7%AC%AC%E5%9B%9B%E6%AC%A1%E8%AF%BE%E7%A8%8B-XSS%E4%B8%8ESQL%E6%B3%A8%E5%85%A5.html" title="第四次课程-XSS与SQL注入">第四次课程-XSS与SQL注入</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-02-02T07:12:03.000Z" title="Created 2024-02-02 15:12:03">2024-02-02</time></span></div><div class="content">XSS基础介绍XSS过滤绕过总结 - 随风kali - 博客园 (cnblogs.com)  跨站脚本，英文全称：Cross-Site Scripting  通过输入可以被解析的特殊字符串, 如 &lt;/p&gt;&lt;script&gt;alert(&#39;this is an alart&#39;);&lt;/script&gt;&lt;p&gt;  其中script标签内的代码会被执行  分类: 反射型XSS, 储存型XSS,...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/%E7%AC%AC%E4%B8%89%E5%91%A8%E8%AF%BE%E7%A8%8B-SQL%E4%B8%8EPHP.html" title="第三周课程-SQL与PHP">第三周课程-SQL与PHP</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-02-01T07:08:19.000Z" title="Created 2024-02-01 15:08:19">2024-02-01</time></span></div><div class="content">MySQL基本操作-- 创建数据库 CREATE DATABASE 数据库名;  -- 选择数据库 USE 数据库名;  -- 创建表格 CREATE TABLE 表格名 (     列1 数据类型,     列2 数据类型,     ... );  -- 插入数据 INSERT INTO 表格名 (列1, 列2, ...) VALUES (值1, 值2, ...);  -- 查询数据 SELECT 列1, 列2, ... FROM 表格名 WHERE 条件;  -- 更新数据 UPDATE 表格名 SET 列1 = 值1, 列2 = 值2, ... WHERE 条件;  -- 删除数据 DELETE FROM 表格名 WHERE 条件;  -- 删除表格 DROP TABLE 表格名;  -- 删除数据库 DROP DATABASE 数据库名;  -- 修改表格结构（添加列） ALTER TABLE 表格名 ADD COLUMN 新列 数据类型;  -- 修改表格结构（修改列） ALTER TABLE 表格名 MODIFY COLUMN 列名 数据类型;  --...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80.html" title="MySQL数据库基础">MySQL数据库基础</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-28T15:13:22.000Z" title="Created 2024-01-28 23:13:22">2024-01-28</time></span></div><div class="content">数据库基本操作MySQL登录&#x2F;退出 登录: mysql -u root -p 或mysql -u root -p -P 3306 -h 127.0.0.1指定IP和端口, 远程连接数据库  退出: exit, quit, \q   一些解释 数据库就相当于文件夹 表就相当于文件 SQL对大小写不敏感 SQL语句末端必须使用分号  注释# 注释1 -- 注释2 /* 注释3 */  MySQL数据类型Text(文本)类型   数据类型 描述    CHAR(size) 保存固定长度的字符串。最多 255 个字符。   VARCHAR(size) 保存可变长度的字符串。最多 255 个字符。注释：如果值的长度大于 255，则被转换为 TEXT 类型。   TINYTEXT 存放最大长度为 255 个字符的字符串。   TEXT 存放最大长度为 65,535 个字符的字符串。   MEDIUMTEXT 存放最大长度为 16,777,215 个字符的字符串。   LONGTEXT 存放最大长度为 4,294,967,295 个字符的字符串。   BLOB 用于...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/%E5%B0%8F%E8%BF%AA%E5%AE%89%E5%85%A8-P3.html" title="小迪安全 P3">小迪安全 P3</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-28T13:29:15.000Z" title="Created 2024-01-28 21:29:15">2024-01-28</time></span></div><div class="content"> 学会不同对象采用不同抓包封包抓取技术分析  抓包 当需要知道应用程序等的IP, 域名时需要抓包后分析 对不同的协议用不同的工具 web协议: Charles, Fiddler, Burpsuite 其他非web协议: WireShark, 科来网络分析系统    </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80.html" title="Python爬虫基础">Python爬虫基础</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-28T05:33:12.000Z" title="Created 2024-01-28 13:33:12">2024-01-28</time></span></div><div class="content">Python爬虫基础爬虫概念定义 网络爬虫是伪装成客户端与服务端进行数据交互的程序。  应用 数据采集, 搜索引擎, 模拟操作, 软件测试, 网络安全(信息轰炸, web漏洞扫描)  一般流程    会话技术:Cookie(s) 介绍: 指某些网站为了辨别用户身份、进行 session 跟踪而储存在用户本地终端上的数据, 实际由服务器发送给客户端, 可以理解为一个凭证, 服务器可以以此辨别用户身份  爬虫中使用cookie  好处: 能够访问登录界面 坏处: 容易被反爬    Session 含义: 在爬虫中, 指一个浏览器窗口从打开到关闭的这个期间 目的: 在一个客户打开浏览器到关闭的这个期间, 发起的所有请求都可以被识别为同一个用户 实现: 客户访问网站时, 生成一个包含SessionID的cookie, 用于服务器识别 Session是储存在服务器上的数据   爬虫基础urllib库request模块简单示例 导入urllib请求模块: import urllib.request   发送GET请求: r =...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/HTTP%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82%E7%BB%93%E6%9E%84.html" title="HTTP协议请求结构">HTTP协议请求结构</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-27T12:53:28.000Z" title="Created 2024-01-27 20:53:28">2024-01-27</time></span></div><div class="content">HTTP协议 HTTP: Hypertext Transfer Protocol 作用: 是一种用于传输超文本的协议。 是客户端和服务器之间进行通信的基础，常用于在Web浏览器和Web服务器之间传输数据。 客户端与服务端之间通过交换一个个独立的消息进行通信, 客户端发出的称为请求, 服务端发出的应答消息称为响应    HTTP请求的基本结构示例: POST /api/login HTTP/1.1  Host: example.com User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36 Content-Type: application/json  &#123;&quot;username&quot;: &quot;user123&quot;, &quot;password&quot;: &quot;pass456&quot;&#125;   请求行（Request...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2-HTML-CSS-JavaScript.html" title="前端三剑客: HTML/CSS/JavaScript">前端三剑客: HTML/CSS/JavaScript</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-01-27T02:55:51.000Z" title="Created 2024-01-27 10:55:51">2024-01-27</time></span></div><div class="content">HTML:结构 HTML是一种超文本标记语言，不是一种编程语言  主要用来实现静态页面，我们在页面看到的文本，图片，视频，声音，表格，链接等都是通过HTML语言描述的  HTML的是由标签组成，给不同的标签不同的属性，可以实现不同的网页效果。  页面基本结构: &lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;title&gt; 页面标题&lt;/title&gt; &lt;/head&gt; &lt;body&gt;   &lt;h1&gt;一个标题&lt;/h1&gt;   &lt;p&gt;一个段落&lt;/p&gt;   &lt;/body&gt; &lt;/html&gt;   参考手册: HTML 标签列表（功能排序） | 菜鸟教程    CSS:修饰介绍 CSS 用于 HTML 文档中元素样式的定义 使用 CSS 的目的就是让网页具有美观一致的页面  参考手册 CSS 参考手册 | 菜鸟教程...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/3/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#content-inner">5</a><a class="extend next" rel="next" href="/page/5/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Myperfer</div><div class="author-info-description">By Myprefer</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">45</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/FastAPI%E9%A1%B9%E7%9B%AE-%E4%BB%8E%E6%9E%84%E5%BB%BA%E5%88%B0%E9%83%A8%E7%BD%B2.html" title="FastAPI项目 从构建到部署">FastAPI项目 从构建到部署</a><time datetime="2024-09-24T09:31:51.000Z" title="Created 2024-09-24 17:31:51">2024-09-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/ML-%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html" title="ML 理论基础">ML 理论基础</a><time datetime="2024-09-07T16:31:52.000Z" title="Created 2024-09-08 00:31:52">2024-09-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/ML-%E7%8E%B0%E4%BB%A3%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.html" title="ML 现代卷积神经网络">ML 现代卷积神经网络</a><time datetime="2024-08-20T12:35:28.000Z" title="Created 2024-08-20 20:35:28">2024-08-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/ML-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.html" title="ML 卷积神经网络">ML 卷积神经网络</a><time datetime="2024-08-13T15:50:25.000Z" title="Created 2024-08-13 23:50:25">2024-08-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/ML-%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9.html" title="ML 模型选择">ML 模型选择</a><time datetime="2024-08-11T14:33:31.000Z" title="Created 2024-08-11 22:33:31">2024-08-11</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/" style="font-size: 1.37em; color: #99a4b2">基础入门</a> <a href="/tags/PHP%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: #999">PHP基础</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 1.1em; color: #999">代码审计</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 1.5em; color: #99a9bf">网络安全</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: #999">前端基础</a> <a href="/tags/XSS%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: #999">XSS基础</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E6%9C%AF%E8%AF%AD/" style="font-size: 1.1em; color: #999">常用术语</a> <a href="/tags/Python%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: #999">Python基础</a> <a href="/tags/%E8%A7%86%E9%A2%91%E4%BC%9A%E8%AE%AE/" style="font-size: 1.3em; color: #99a1ac">视频会议</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 1.1em; color: #999">渗透测试</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" style="font-size: 1.5em; color: #99a9bf">学习日志</a> <a href="/tags/%E7%A9%B7%E4%B8%BE%E7%88%86%E7%A0%B4/" style="font-size: 1.1em; color: #999">穷举爆破</a> <a href="/tags/SQL%E6%B3%A8%E5%85%A5/" style="font-size: 1.1em; color: #999">SQL注入</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" style="font-size: 1.17em; color: #999c9f">信息收集</a> <a href="/tags/%E5%B0%8F%E8%BF%AA%E5%AE%89%E5%85%A8/" style="font-size: 1.43em; color: #99a6b9">小迪安全</a> <a href="/tags/WEB%E6%94%BB%E9%98%B2/" style="font-size: 1.23em; color: #999ea6">WEB攻防</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%86%E7%B1%BB/" style="font-size: 1.1em; color: #999">漏洞分类</a> <a href="/tags/PHP%E5%BC%80%E5%8F%91/" style="font-size: 1.1em; color: #999">PHP开发</a> <a href="/tags/SQL%E5%9F%BA%E7%A1%80/" style="font-size: 1.17em; color: #999c9f">SQL基础</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
+      <a class="card-more-btn" href="/archives/" title="View More"><i class="fas fa-angle-right"></i></a>
+    </div>
+    <ul class="card-archive-list">
+  
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/09/">
+          <span class="card-archive-list-date">September 2024</span>
+          <span class="card-archive-list-count">2</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/08/">
+          <span class="card-archive-list-date">August 2024</span>
+          <span class="card-archive-list-count">9</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/07/">
+          <span class="card-archive-list-date">July 2024</span>
+          <span class="card-archive-list-count">1</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/06/">
+          <span class="card-archive-list-date">June 2024</span>
+          <span class="card-archive-list-count">3</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/05/">
+          <span class="card-archive-list-date">May 2024</span>
+          <span class="card-archive-list-count">1</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/04/">
+          <span class="card-archive-list-date">April 2024</span>
+          <span class="card-archive-list-count">3</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/03/">
+          <span class="card-archive-list-date">March 2024</span>
+          <span class="card-archive-list-count">6</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/02/">
+          <span class="card-archive-list-date">February 2024</span>
+          <span class="card-archive-list-count">10</span>
+        </a>
+      </li>
+    </ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">45</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-01-29T07:15:22.541Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Myperfer</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

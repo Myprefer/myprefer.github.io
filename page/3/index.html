@@ -1,2 +1,231 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/favicon.ico"><script type="module" crossorigin src="/static/js/120aa8f8.js"></script><link rel="stylesheet" href="/static/css/a14e1a22.css"><!-- hexo injector head_end start --><script rel="prefetch" async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script rel="preload" src="https://unpkg.com/blueimp-md5@^2.19.0/js/md5.min.js"></script><script rel="preload" src="https://unpkg.com/lodash@^4.17.21/lodash.min.js"></script><link rel="stylesheet" href="https://fonts.loli.net/css?family=Rubik" /><script rel="preload" src="https://unpkg.com/gitalk@^1.8.0/dist/gitalk.min.js"></script><link rel="stylesheet" href="https://unpkg.com/gitalk@^1.8.0/dist/gitalk.css"/><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="网络安全" type="application/atom+xml">
-</head><body id="body-container"><noscript><strong>We're sorry but this app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div></body></html>
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>网络安全 - 学习笔记</title><meta name="author" content="Myperfer"><meta name="copyright" content="Myperfer"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="By Myprefer">
+<meta property="og:type" content="website">
+<meta property="og:title" content="网络安全">
+<meta property="og:url" content="https://myprefer.github.io/page/3/index.html">
+<meta property="og:site_name" content="网络安全">
+<meta property="og:description" content="By Myprefer">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://myprefer.github.io/img/butterfly-icon.png">
+<meta property="article:author" content="Myperfer">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://myprefer.github.io/img/butterfly-icon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://myprefer.github.io/page/3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: undefined,
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '网络安全',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="网络安全" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="triangles-wrap"><div class="triangles-eiz"></div><div class="triangles-seiz"></div><div class="triangles-sei"></div><div class="triangles-fei"></div><div class="triangles-feir"></div><div class="triangles-trei"></div><div class="triangles-dvai"></div><div class="triangles-ein"></div><div class="triangles-zero"></div></div></div><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">网络安全</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">网络安全</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/%E8%BD%AC-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95-%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B.html" title="(转)渗透测试-基本流程">(转)渗透测试-基本流程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-03-21T14:50:33.000Z" title="Created 2024-03-21 22:50:33">2024-03-21</time></span></div><div class="content">一般来说，渗透测试的基本流程如下：  确定目标 信息收集 漏洞探测 漏洞利用getshell 内网转发 内网渗透 痕迹清除 撰写渗透测试报告  一 确定目标这个没什么好说的就是确定你的渗透目标是什么。 二 信息收集信息收集是整个渗透测试中最重要的一步，你要把你要攻击的目标全部探测清楚，才能更好的攻击。信息收集的越丰富，内容或情报收集的越多，攻击的成功率就越高。 而信息收集到底要收集哪些信息呢？接下来，我就给大家整理了一下，渗透测试中常见的一些需要收集的信息。 1.主机扫描(Nessus) 对目标主机进行扫描，而不仅仅是对网站进行扫描，扫描目标主机开放了哪些端口，扫描端口运行的服务，目标主机上有哪些漏洞。 主机扫描的工具也有很多，比如：Nessus 2.端口扫描(nmap) 需要知道目标服务器开放了哪些端口，常见的如 135 、137 、138 、139 、445，这几个端口经常爆发漏洞。以下是一些服务端口的漏洞： 22——&gt;ssh弱口令 873——&gt;rsync...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/WEB%E6%94%BB%E9%98%B2-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96.html" title="WEB攻防-反序列化">WEB攻防-反序列化</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-03-18T13:45:44.000Z" title="Created 2024-03-18 21:45:44">2024-03-18</time></span></div><div class="content">反序列化什么是反序列化格式转换  序列化: 对象转换为数组或字符串等格式 反序列化: 将数组或字符串等格式转换成对象   PHP反序列化漏洞产生原因魔法方法  触发：unserialize函数的变量可控，文件中存在可利用的类，类中有魔术方法  __construct()://构造函数，当对象new的时候会自动调用  __destruct()://析构函数当对象被销毁时会被自动调用  __wakeup()://unserialize()时会被自动调用  __invoke(): //当尝试以调用函数的方法调用一个对象时，会被自动调用  __call(): //在对象上下文中调用不可访问的方法时触发  __callStatci(): //在静态上下文中调用不可访问的方法时触发  __get(): //用于从不可访问的属性读取数据  __set(): //用于将数据写入不可访问的属性  __isset(): //在不可访问的属性上调用isset()或empty()触发  __unset(): //在不可访问的属性上使用unset()时触发  __toString():...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/WEB%E6%94%BB%E9%98%B2-%E9%80%9A%E7%94%A8%E6%BC%8F%E6%B4%9E.html" title="WEB攻防-通用漏洞">WEB攻防-通用漏洞</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-03-05T15:07:08.000Z" title="Created 2024-03-05 23:07:08">2024-03-05</time></span></div><div class="content">WEB攻防-通用漏洞大型靶场Vulhub - Docker-Compose file for vulnerability environment SQL注入-补充内容ACCESS注入偏移注入使用场景 知道表名 不知道列名 列名特殊, 无法爆破  注入原理 假设一个表有8个字段，admin表有3个字段。(需要先判断列数)  联合查询payload：union select 1,2,3,4,5,6,7,8 from admin   在我们不知道admin有多少字段的情况下可以尝试payload：union select 1,2,3,4,5,6,7,admin.* from admin，此时页面出错  直到payload：union select 1,2,3,4,5,admin.* from admin时页面返回正常，说明admin表有三个字段  然后通过移动admin.*的位置，就可以回显不同的数据   MYSQL 读取文件 select load_file(&#39;D:/a.txt&#39;);   写入文件 select &#39;xxxx&#39; into outfile...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/%E8%BD%AC-%E7%9F%A5%E8%AF%86%E7%82%B9%E5%90%88%E9%9B%86.html" title="(转)知识点合集">(转)知识点合集</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-03-05T15:07:07.000Z" title="Created 2024-03-05 23:07:07">2024-03-05</time></span></div><div class="content"> Author: Evi1cg Blog: https://evi1cg.github.io 信息搜集开源情报信息收集（OSINT）github Github_Nuggests（自动爬取Github上文件敏感信息泄露） :https://github.com/az0ne/Github_Nuggests GSIL（能够实现近实时（15分钟内）的发现Github上泄露的信息）...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/WEB%E6%94%BB%E9%98%B2-%E7%89%B9%E6%80%A7%E6%BC%8F%E6%B4%9E.html" title="WEB攻防-特性漏洞">WEB攻防-特性漏洞</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-03-03T06:48:26.000Z" title="Created 2024-03-03 14:48:26">2024-03-03</time></span></div><div class="content">ASP安全 常用组合: windows+IIS+ASP+Access(sql server)  安全问题:MDB默认下载 access数据库文件后缀名一般为asp&#x2F;asa&#x2F;mdb 其中, 浏览器访问asp&#x2F;asa文件时, 文件会被解析执行, 访问mdb文件时会下载该文件 由此可以获取站点敏感数据  ASP后门植入连接 留言板写入一句话木马: ┼攠數畣整爠煥敵瑳∨≡┩愾   密码为a   原理: 网站开启了asp解析，直接访问数据库文件会返回信息，写入一句话木马后进行连接   IIS短文件名探针安全漏洞 原理:  Windows系统为了兼容16位MS-DOS程序，为文件名较长的文件和文件夹生成了对应的Windows...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/PHP%E5%BC%80%E5%8F%91.html" title="PHP开发">PHP开发</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-02-28T10:59:34.000Z" title="Created 2024-02-28 18:59:34">2024-02-28</time></span></div><div class="content">文件操作文件上传&lt;form action=&quot;&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;     &lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;     &lt;input type=&quot;file&quot; name=&quot;upload&quot; multiple=&quot;multiple&quot;&gt;     &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt; &lt;/form&gt; &lt;?php if ($_FILES) &#123;     $name = $_FILES[&#39;upload&#39;][&#39;name&#39;];     $tmp_name = $_FILES[&#39;upload&#39;][&#39;tmp_name&#39;];      if...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/%E4%BF%A1%E6%81%AF%E6%89%93%E7%82%B9.html" title="信息打点">信息打点</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-02-26T15:22:53.000Z" title="Created 2024-02-26 23:22:53">2024-02-26</time></span></div><div class="content">信息点 基础信息 操作系统信息 应用信息 防护方法信息 人员信息 其他信息等  架构 中间件 数据库 操作系统 开发语言 CMS  开发语言 url文件后缀  查看访问数据包  搜索引擎搜索 site:http://xiaodi8.com index.php   搭建组合推算如: apache+php+mysql   中间件 查看返回数据包 搭建组合推算 端口扫描  数据库 端口扫描(mysql:3306) 搭建组合推算  操作系统 大小写如:  http://xiaodi8.com/index.php可以访问 http://xiaodi8.com/indEx.php无法访问很有可能是Linux系统 如果对大小写不敏感, 可能是Win系统   TTL值默认的TTL值: 1、WINDOWS NT&#x2F;2000   TTL：1282、WINDOWS 95&#x2F;98     TTL：323、UNIX              TTL：2554、LINUX             TTL：645、WIN7         ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/%E7%A9%B7%E4%B8%BE%E7%88%86%E7%A0%B4.html" title="穷举爆破">穷举爆破</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-02-24T09:07:28.000Z" title="Created 2024-02-24 17:07:28">2024-02-24</time></span></div><div class="content">常见的端口服务http 80 https 443 ftp 21 ssh 22 mysql 3306 mssql 1433 rsync 873 oracle 1521 mongo 28017 redis 6379 tomcat 8080 smtp 25 POP3 110 dns 53 telent 23 vnc 5900 pcanywhere 5632 Apache/Tomcat/Nginx/Axis2/resin/jboss 80|8080 WebLogic 7001 Jenkins 8080 8089 SNMP 161 Zabbix 8069 elasticsearch 9200 9300 rdp 3389  穷举爆破工具九头蛇hydrahydra -h hydra [[[-l LOGIN|-L FILE] [-p PASS|-PFILE]] | [-C FILE]] [-e ns]  [-o FILE] [-t TASKS] [-M FILE [-T TASKS]][-w TIME] [-f] [-s PORT] [-S] [-vV] server service...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86.html" title="信息收集">信息收集</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-02-22T07:35:50.000Z" title="Created 2024-02-22 15:35:50">2024-02-22</time></span></div><div class="content"> 信息收集是渗透测试的前提  whois域名注册信息查询 命令: whois &lt;域名&gt; 站长工具_whois查询工具_爱站网 同IP网站查询,C段查询,IP反查域名,在线C段,旁站工具 - WebScan 天眼查  文件和目录扫描工具 DirBuster Pker 御剑后台扫描工具  子域名收集域名构成域名各部分由.分隔, 最右边的为一级域名(顶级域名, TLD, 如com, org等), 其左为二级域名(SLD), 以此类推 每级域名控制下一级域名的分配 子域名: 例如space.bilibili.com和www.bilibili.com是bilibili.com的子域名 端口扫描 端口扫描相关概念：端口-&gt;服务  一般在知道服务器开放了哪些端口后，就知道服务器开启了哪些服务。   端口扫描的实 端口扫描包括向每个端口发送消息，一次只发送一个消息。接收到的回应类型表示是否在使用该端口并且可由此探寻弱点。  工具  Nmap  御剑     常见开放端口及攻击方向          指纹识别 识别出相应的Web容器或CMS才能查找与其相关的漏洞,...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1.html" title="代码审计">代码审计</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2024-02-14T08:54:53.000Z" title="Created 2024-02-14 16:54:53">2024-02-14</time></span></div><div class="content">概念 由具备丰富的编码经验并对安全编码及应用安全工具有很深刻理解的安全服务人员根据一定的代码规范和标准，针对应用程序源代码，从结构，脆弱性以及缺陷等方面进行审查，最终输出代码审计报告，完善应用程序，提升自身安全水平。  步骤:  配置审计分析环境 熟悉业务流程 分析程序架构 工具自动化分析 人工审计结果 整理审计报告   思路 观察项目整体框架 项目文件目录结构 明确每个文件的作用功能   根据敏感关键字回溯参数传递过程 预定义的变量()$_GET $_POST $_COOKIE $_SERVER $_ENV $_SESSION等) 未初始化的变量(regist_globle=on) 变量覆盖 变量的传递存储(中转的变量) 文件包含(require，include,require_once,include_once&#96;) 代码执行(eval() assert()等) 命令执行(exec() shell_exec() system()等) SQL注入和XSS漏洞相关的关键字 SQL注入(select...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#content-inner">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#content-inner">4</a><a class="page-number" href="/page/5/#content-inner">5</a><a class="extend next" rel="next" href="/page/4/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Myperfer</div><div class="author-info-description">By Myprefer</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">45</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/FastAPI%E9%A1%B9%E7%9B%AE-%E4%BB%8E%E6%9E%84%E5%BB%BA%E5%88%B0%E9%83%A8%E7%BD%B2.html" title="FastAPI项目 从构建到部署">FastAPI项目 从构建到部署</a><time datetime="2024-09-24T09:31:51.000Z" title="Created 2024-09-24 17:31:51">2024-09-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/ML-%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html" title="ML 理论基础">ML 理论基础</a><time datetime="2024-09-07T16:31:52.000Z" title="Created 2024-09-08 00:31:52">2024-09-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/ML-%E7%8E%B0%E4%BB%A3%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.html" title="ML 现代卷积神经网络">ML 现代卷积神经网络</a><time datetime="2024-08-20T12:35:28.000Z" title="Created 2024-08-20 20:35:28">2024-08-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/ML-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C.html" title="ML 卷积神经网络">ML 卷积神经网络</a><time datetime="2024-08-13T15:50:25.000Z" title="Created 2024-08-13 23:50:25">2024-08-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/ML-%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9.html" title="ML 模型选择">ML 模型选择</a><time datetime="2024-08-11T14:33:31.000Z" title="Created 2024-08-11 22:33:31">2024-08-11</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/" style="font-size: 1.37em; color: #99a4b2">基础入门</a> <a href="/tags/PHP%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: #999">PHP基础</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 1.1em; color: #999">代码审计</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 1.5em; color: #99a9bf">网络安全</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: #999">前端基础</a> <a href="/tags/XSS%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: #999">XSS基础</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E6%9C%AF%E8%AF%AD/" style="font-size: 1.1em; color: #999">常用术语</a> <a href="/tags/Python%E5%9F%BA%E7%A1%80/" style="font-size: 1.1em; color: #999">Python基础</a> <a href="/tags/%E8%A7%86%E9%A2%91%E4%BC%9A%E8%AE%AE/" style="font-size: 1.3em; color: #99a1ac">视频会议</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 1.1em; color: #999">渗透测试</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97/" style="font-size: 1.5em; color: #99a9bf">学习日志</a> <a href="/tags/%E7%A9%B7%E4%B8%BE%E7%88%86%E7%A0%B4/" style="font-size: 1.1em; color: #999">穷举爆破</a> <a href="/tags/SQL%E6%B3%A8%E5%85%A5/" style="font-size: 1.1em; color: #999">SQL注入</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" style="font-size: 1.17em; color: #999c9f">信息收集</a> <a href="/tags/%E5%B0%8F%E8%BF%AA%E5%AE%89%E5%85%A8/" style="font-size: 1.43em; color: #99a6b9">小迪安全</a> <a href="/tags/WEB%E6%94%BB%E9%98%B2/" style="font-size: 1.23em; color: #999ea6">WEB攻防</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%86%E7%B1%BB/" style="font-size: 1.1em; color: #999">漏洞分类</a> <a href="/tags/PHP%E5%BC%80%E5%8F%91/" style="font-size: 1.1em; color: #999">PHP开发</a> <a href="/tags/SQL%E5%9F%BA%E7%A1%80/" style="font-size: 1.17em; color: #999c9f">SQL基础</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
+      <a class="card-more-btn" href="/archives/" title="View More"><i class="fas fa-angle-right"></i></a>
+    </div>
+    <ul class="card-archive-list">
+  
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/09/">
+          <span class="card-archive-list-date">September 2024</span>
+          <span class="card-archive-list-count">2</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/08/">
+          <span class="card-archive-list-date">August 2024</span>
+          <span class="card-archive-list-count">9</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/07/">
+          <span class="card-archive-list-date">July 2024</span>
+          <span class="card-archive-list-count">1</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/06/">
+          <span class="card-archive-list-date">June 2024</span>
+          <span class="card-archive-list-count">3</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/05/">
+          <span class="card-archive-list-date">May 2024</span>
+          <span class="card-archive-list-count">1</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/04/">
+          <span class="card-archive-list-date">April 2024</span>
+          <span class="card-archive-list-count">3</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/03/">
+          <span class="card-archive-list-date">March 2024</span>
+          <span class="card-archive-list-count">6</span>
+        </a>
+      </li>
+    
+      <li class="card-archive-list-item">
+        <a class="card-archive-list-link" href="/archives/2024/02/">
+          <span class="card-archive-list-date">February 2024</span>
+          <span class="card-archive-list-count">10</span>
+        </a>
+      </li>
+    </ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">45</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-01-29T07:15:22.541Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Myperfer</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
